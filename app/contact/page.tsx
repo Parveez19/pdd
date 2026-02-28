@@ -1,168 +1,526 @@
-'use client'
-import React, { useState,ChangeEvent, FormEvent  } from 'react';
+ "use client";
 
+import React from "react";
+import {
+  FaWhatsapp,
+  FaPhone,
+  FaEnvelope,
+  FaLocationDot,
+  FaClock,
+  FaArrowRight,
+  FaCouch,
+  FaIndustry,
+  FaRegCircleCheck,
+} from "react-icons/fa6";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-const [status, setStatus] = useState<'loading' | 'success' | 'error' | null>(null);
+const PHONE_E164 = "+917975709648";
+const EMAIL = "prestigedreamdecor@gmail.com";
+const ADDRESS =
+  "1001/52/1 Main Road, Nanjappa - Thindlu Rd, Doddabommasandra, Vidyaranyapura, Bengaluru, Karnataka 560097";
+const BUSINESS_HOURS = "Monday – Sunday, 10:30 AM – 8:30 PM";
 
-const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-  setFormData({ ...formData, [e.target.name]: e.target.value });
-};
+function waLink(message: string) {
+  const digitsOnly = PHONE_E164.replace(/[^\d]/g, "");
+  return `https://wa.me/${digitsOnly}?text=${encodeURIComponent(message)}`;
+}
 
-const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+const defaultInquiryMessage =
+  "Hi Prestige Dream Decor, I’d like to discuss a custom sofa for my home. Please help me with options, pricing and delivery timeline.";
 
-  setStatus('loading');
-  try {
-    const res = await fetch('https://api.prestigedreamdecor.in/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    });
+const sofaTypes = [
+  "L-Shape Sofa",
+  "3-Seater / 2-Seater Sofa",
+  "Sofa Cum Bed",
+  "Recliner Sofa",
+  "Sectional / U-Shape Sofa",
+  "Bedroom Seating / Bench",
+  "Other (Tell us in the message)",
+];
 
-    if (res.ok) {
-      setStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    } else {
-      setStatus('error');
+function WhatsAppPrimaryButton({
+  label,
+  message,
+  className = "",
+}: {
+  label: string;
+  message: string;
+  className?: string;
+}) {
+  return (
+    <a
+      href={waLink(message)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={[
+        "inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-semibold text-white shadow-lg ring-2 ring-emerald-400/40",
+        "hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-white",
+        className,
+      ].join(" ")}
+    >
+      <FaWhatsapp aria-hidden="true" className="text-base" />
+      {label}
+    </a>
+  );
+}
+
+const ContactPage: React.FC = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const name = (formData.get("name") as string)?.trim();
+    const phone = (formData.get("phone") as string)?.trim();
+    const type = (formData.get("sofaType") as string)?.trim();
+    const message = (formData.get("message") as string)?.trim();
+
+    const lines = [
+      "Hi Prestige Dream Decor, I’d like a quick sofa consultation.",
+      name ? `Name: ${name}` : null,
+      phone ? `Phone: ${phone}` : null,
+      type ? `Sofa type interested in: ${type}` : null,
+      message ? `Details: ${message}` : null,
+    ].filter(Boolean);
+
+    const fullMessage = lines.join("\n");
+    const url = waLink(fullMessage);
+
+    if (typeof window !== "undefined") {
+      window.open(url, "_blank");
     }
-  } catch (err) {
-    setStatus('error');
-  }
-};
 
-  const googleMapsEmbedUrl =
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.486050431701!2d77.55745297492007!3d13.068352887255916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae23614ecb9453%3A0xe40430f5c46bba6d!2sPrestige%20Dream%20Decor!5e0!3m2!1sen!2sin!4v1747757362250!5m2!1sen!2sin';
+    e.currentTarget.reset();
+  };
+
+  const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(
+    ADDRESS
+  )}&output=embed`;
+
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    ADDRESS
+  )}`;
 
   return (
-    <section className="text-gray-600 body-font relative" id="contact">
-      <div className="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap">
-        {/* Map + Info */}
-        <div className="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-          <div className="relative h-96 w-full">
-            <iframe
-              src={googleMapsEmbedUrl}
-              title="Prestige Dream Decor Location Map"
-              className="absolute inset-0 w-full h-full border-0"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              aria-label="Prestige Dream Decor Location"
-              style={{
-                filter: 'grayscale(1) contrast(1.2) opacity(0.4)',
-              }}
-            ></iframe>
+    <div className="bg-white text-slate-900">
+      {/* HEADER SECTION */}
+      <section className="border-b border-slate-100 bg-slate-50/70">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 sm:py-14 lg:flex-row lg:items-center">
+          <div className="max-w-2xl">
+            <p className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-700">
+              Contact Prestige Dream Decor
+            </p>
+            <h1 className="mt-5 text-balance text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl">
+              Let&apos;s Design Your Perfect Sofa
+            </h1>
+            <p className="mt-4 max-w-xl text-pretty text-sm sm:text-base leading-relaxed text-slate-600">
+              Share your room photos, size and budget on WhatsApp or drop into our Bengaluru
+              showroom. Our team will guide you with layouts, fabrics and pricing — no pressure, just
+              clear, friendly advice.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <WhatsAppPrimaryButton
+                label="Chat on WhatsApp – Free Consultation"
+                message={defaultInquiryMessage}
+                className="w-full sm:w-auto"
+              />
+              <div className="text-xs text-slate-500">
+                <p>Or call us on</p>
+                <a
+                  href={`tel:${PHONE_E164}`}
+                  className="font-semibold text-slate-900 hover:text-emerald-700"
+                >
+                  +91 79757 09648
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md w-full mt-4">
-            <div className="lg:w-1/2 px-6">
-              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">
-                ADDRESS
+
+          <div className="w-full max-w-md lg:ml-auto">
+            <div className="overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-slate-100">
+              <div className="border-b border-slate-100 px-5 py-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                  Quick snapshot
+                </p>
+                <p className="mt-1 text-sm font-semibold text-slate-900">
+                  WhatsApp, call or visit — whichever is easiest today.
+                </p>
+              </div>
+              <div className="grid gap-4 px-5 py-5 text-sm text-slate-700">
+                <div className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                    <FaWhatsapp aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      WhatsApp
+                    </p>
+                    <a
+                      href={waLink(defaultInquiryMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 block font-semibold text-slate-900 hover:text-emerald-700"
+                    >
+                      +91 79757 09648
+                    </a>
+                    <p className="mt-1 text-xs text-slate-500">
+                      Fastest way to get layouts, fabrics &amp; pricing.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-amber-300">
+                    <FaLocationDot aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Showroom
+                    </p>
+                    <p className="mt-1 text-sm text-slate-900">
+                      Vidyaranyapura, Bengaluru
+                    </p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      See comfort, fabrics and finish in person before you decide.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <span className="mt-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-slate-800">
+                    <FaClock aria-hidden="true" />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Business hours
+                    </p>
+                    <p className="mt-1 text-sm text-slate-900">{BUSINESS_HOURS}</p>
+                    <p className="mt-1 text-xs text-slate-500">
+                      Planning a visit? Message us on WhatsApp so we can keep samples ready.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT INFORMATION BLOCK */}
+      <section className="border-b border-slate-100 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr,1.2fr] lg:items-start">
+            <div className="space-y-4 rounded-3xl bg-slate-50/80 p-5 shadow-xs ring-1 ring-slate-100">
+              <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
+                Contact information
               </h2>
-              <p className="mt-1">
-                1001/52/1 Main Road, Nanjappa - Thindlu Rd, Doddabommasandra,
-                Vidyaranyapura, Bengaluru, Karnataka 560097
+              <p className="text-sm text-slate-600">
+                Reach out however you prefer — WhatsApp, call, or email. We&apos;ll help you plan the
+                right sofa for your space.
+              </p>
+              <div className="mt-3 grid gap-4 text-sm text-slate-800">
+                <div className="flex items-start gap-3">
+                  <FaPhone className="mt-1 text-emerald-600" aria-hidden="true" />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Phone / WhatsApp
+                    </p>
+                    <a
+                      href={`tel:${PHONE_E164}`}
+                      className="mt-1 block font-semibold hover:text-emerald-700"
+                    >
+                      +91 79757 09648
+                    </a>
+                    <a
+                      href={waLink(defaultInquiryMessage)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 hover:text-emerald-800"
+                    >
+                      <FaWhatsapp aria-hidden="true" className="text-sm" />
+                      Chat on WhatsApp
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FaEnvelope className="mt-1 text-slate-700" aria-hidden="true" />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Email
+                    </p>
+                    <a
+                      href={`mailto:${EMAIL}`}
+                      className="mt-1 block text-sm font-semibold text-slate-900 hover:text-emerald-700"
+                    >
+                      {EMAIL}
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FaLocationDot className="mt-1 text-slate-900" aria-hidden="true" />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Showroom address
+                    </p>
+                    <p className="mt-1 text-sm text-slate-900">{ADDRESS}</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <FaClock className="mt-1 text-slate-700" aria-hidden="true" />
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                      Business hours
+                    </p>
+                    <p className="mt-1 text-sm text-slate-900">{BUSINESS_HOURS}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* QUICK INQUIRY FORM */}
+            <div className="rounded-3xl bg-slate-950 text-slate-50 shadow-xl">
+              <div className="border-b border-slate-800 px-5 py-4 sm:px-6">
+                <h2 className="text-lg sm:text-xl font-bold tracking-tight">
+                  Quick inquiry form
+                </h2>
+                <p className="mt-1 text-xs sm:text-sm text-slate-300">
+                  Share a few details and we&apos;ll reply on WhatsApp with options and pricing. No
+                  long forms, no spam.
+                </p>
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-4 px-5 py-5 sm:px-6 sm:py-6">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="name"
+                      className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-300"
+                    >
+                      Name
+                    </label>
+                    <input
+                      id="name"
+                      name="name"
+                      type="text"
+                      autoComplete="name"
+                      required
+                      className="h-10 w-full rounded-xl border border-slate-800 bg-slate-900 px-3 text-sm text-slate-50 placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      placeholder="Full name"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label
+                      htmlFor="phone"
+                      className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-300"
+                    >
+                      Phone number
+                    </label>
+                    <input
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      autoComplete="tel"
+                      required
+                      className="h-10 w-full rounded-xl border border-slate-800 bg-slate-900 px-3 text-sm text-slate-50 placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      placeholder="WhatsApp number"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label
+                    htmlFor="sofaType"
+                    className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-300"
+                  >
+                    Sofa type interested in
+                  </label>
+                  <select
+                    id="sofaType"
+                    name="sofaType"
+                    className="h-10 w-full rounded-xl border border-slate-800 bg-slate-900 px-3 text-sm text-slate-50 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select an option (optional)
+                    </option>
+                    {sofaTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-medium uppercase tracking-[0.16em] text-slate-300"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full rounded-xl border border-slate-800 bg-slate-900 px-3 py-2 text-sm text-slate-50 placeholder:text-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    placeholder="Room size, layout, preferred style or any questions…"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <button
+                    type="submit"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-4 py-2.5 text-sm font-semibold text-white shadow-lg ring-2 ring-emerald-400/50 transition hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-950"
+                  >
+                    <FaWhatsapp aria-hidden="true" />
+                    Submit &amp; open WhatsApp
+                  </button>
+                  <p className="text-[11px] text-slate-400">
+                    Your details are only used to respond to your inquiry. We usually reply within
+                    business hours on the same day.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GOOGLE MAP EMBED SECTION */}
+      <section className="border-b border-slate-100 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <div className="grid gap-8 lg:grid-cols-[1.3fr,1fr] lg:items-center">
+            <div className="space-y-4">
+              <div className="overflow-hidden rounded-3xl border border-slate-100 bg-slate-100 shadow-sm">
+                <iframe
+                  src={mapEmbedUrl}
+                  title="Prestige Dream Decor showroom location on Google Maps"
+                  className="h-64 w-full border-0 sm:h-80"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  aria-label="Map showing the location of Prestige Dream Decor showroom in Bengaluru"
+                />
+              </div>
+            </div>
+            <div className="space-y-4 rounded-3xl bg-slate-50/90 p-5 shadow-xs ring-1 ring-slate-100">
+              <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
+                Visit our showroom
+              </h2>
+              <p className="text-sm text-slate-600">
+                See comfort, fabrics and finishes in person. Shortlist designs online and walk in
+                with clarity on what will suit your room.
+              </p>
+              <div className="space-y-2 text-sm text-slate-800">
+                <p className="font-semibold">Prestige Dream Decor Showroom</p>
+                <p>{ADDRESS}</p>
+                <p className="text-xs text-slate-500">Landmark: Near Vidyaranyapura</p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href={directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 sm:w-auto"
+                >
+                  <FaArrowRight aria-hidden="true" />
+                  Get Directions
+                </a>
+                <a
+                  href={waLink(
+                    "Hi Prestige Dream Decor, please share your Google Maps location and best time to visit the showroom."
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/70 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-700 shadow-sm hover:bg-emerald-50 sm:w-auto"
+                >
+                  <FaWhatsapp aria-hidden="true" />
+                  WhatsApp for live location
+                </a>
+              </div>
+              <p className="text-[11px] text-slate-500">
+                Visiting from out of Bengaluru? Share your travel dates and we&apos;ll line up
+                fabric books and layout options in advance.
               </p>
             </div>
-            <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
-              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs">
-                EMAIL
+          </div>
+        </div>
+      </section>
+
+      {/* WHATSAPP CTA SECTION */}
+      <section className="border-b border-slate-100 bg-slate-950">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <div className="grid gap-6 rounded-3xl bg-gradient-to-r from-emerald-600 to-emerald-500 px-6 py-8 text-white shadow-xl sm:grid-cols-[1.6fr,1.1fr] sm:items-center">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-emerald-100">
+                WhatsApp first, showroom next
+              </p>
+              <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight">
+                Chat with us instantly
               </h2>
-              <a
-                href="mailto:prestigedreamdecor@gmail.com"
-                className="text-indigo-500 leading-relaxed"
-              >
-                prestigedreamdecor@gmail.com
-              </a>
-              <h2 className="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">
-                PHONE
-              </h2>
-              <a href="tel:+917975709648" className="leading-relaxed">
-                7975709648
-              </a>
+              <p className="mt-3 text-sm sm:text-base text-emerald-50">
+                Share a quick message and we&apos;ll help you choose the right sofa style, size and
+                fabric before you even step into the showroom.
+              </p>
+            </div>
+            <div className="space-y-3">
+              <WhatsAppPrimaryButton
+                label="Chat with us instantly"
+                message={defaultInquiryMessage}
+                className="w-full"
+              />
+              <p className="text-[11px] text-emerald-100">
+                Response within business hours. No automated bots — you chat directly with our
+                team.
+              </p>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Contact Form */}
-        <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 px-3 py-3 mt-8 md:mt-0">
-          <h1 className="text-gray-900 text-2xl mb-2 font-semibold title-font">
-            Send Us Your Feedback
-          </h1>
-          <p className="leading-relaxed mb-5 text-gray-600">
-            Help us create better spaces by sharing your experience with
-            Prestige Dream Decor.
-          </p>
-
-          <form onSubmit={handleSubmit}>
-            <div className="relative mb-4">
-              <label htmlFor="name" className="leading-7 text-sm text-gray-600">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
+      {/* TRUST REMINDER SECTION */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
+          <div className="rounded-3xl bg-slate-50/90 p-6 shadow-xs ring-1 ring-slate-100">
+            <div className="grid gap-5 text-sm text-slate-800 sm:grid-cols-3">
+              <div className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+                  <FaCouch aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">10+ Years Experience</p>
+                  <p className="mt-1 text-xs text-slate-600">
+                    A decade of crafting sofas and custom furniture that last through moves and
+                    makeovers.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+                  <FaIndustry aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">In-house Manufacturing</p>
+                  <p className="mt-1 text-xs text-slate-600">
+                    Designed, built and finished in our own unit — not outsourced to unknown
+                    workshops.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="mt-1 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+                  <FaRegCircleCheck aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-slate-900">Free Consultation</p>
+                  <p className="mt-1 text-xs text-slate-600">
+                    Share your space and budget — we&apos;ll suggest layouts and fabrics at no
+                    extra cost.
+                  </p>
+                </div>
+              </div>
             </div>
-
-            <div className="relative mb-4">
-              <label htmlFor="email" className="leading-7 text-sm text-gray-600">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-              />
-            </div>
-
-            <div className="relative mb-4">
-              <label htmlFor="message" className="leading-7 text-sm text-gray-600">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              disabled={status === 'loading'}
-              className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-            >
-              {status === 'loading' ? 'Submitting...' : 'Submit'}
-            </button>
-          </form>
-
-          {status === 'success' && (
-            <p className="text-green-600 text-sm mt-2">Message sent successfully!</p>
-          )}
-          {status === 'error' && (
-            <p className="text-red-600 text-sm mt-2">Something went wrong. Please try again.</p>
-          )}
-
-          <p className="text-xs text-gray-500 mt-3">
-            Thank you for taking the time to reach out. We strive to make every
-            space feel like home.
-          </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 
-export default Contact;
+export default ContactPage;

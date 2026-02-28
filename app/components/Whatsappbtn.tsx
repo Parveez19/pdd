@@ -1,13 +1,19 @@
-import React from 'react';
-import Link from 'next/link';
-import { FaWhatsapp } from 'react-icons/fa';
-const WhatsAppButton = ({ phoneNumber = '+917975709648' }) => {
-  const whatsappLink = `https://wa.me/${phoneNumber}`;
+import React from "react";
+import Link from "next/link";
+import { FaWhatsapp } from "react-icons/fa";
+
+type Props = {
+  phoneNumber?: string;
+};
+
+const WhatsAppButton: React.FC<Props> = ({ phoneNumber = "+917975709648" }) => {
+  const digitsOnly = phoneNumber.replace(/[^\d]/g, "");
+  const whatsappLink = `https://wa.me/${digitsOnly}`;
 
   return (
-    <Link href={whatsappLink} target="_blank" rel="noopener noreferrer">
-      <div className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-3 z-50 cursor-pointer">
-        <FaWhatsapp size={24} />
+    <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+      <div className="fixed bottom-5 right-5 z-50 cursor-pointer rounded-full bg-emerald-500 p-3 text-white shadow-lg ring-2 ring-white/70 transition hover:bg-emerald-600 hover:shadow-xl md:bottom-6 md:right-6 md:p-4">
+        <FaWhatsapp size={26} />
       </div>
     </Link>
   );

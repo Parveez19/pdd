@@ -1,39 +1,97 @@
-import React from 'react'
+import React from "react";
+import Link from "next/link";
+import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
+    <footer className="border-t border-slate-100 bg-slate-950 text-slate-200">
+      <div className="mx-auto max-w-6xl px-4 py-10">
+        <div className="grid gap-8 md:grid-cols-4">
+          <div className="md:col-span-2 space-y-3">
+            <p className="text-sm font-semibold tracking-[0.18em] text-amber-400 uppercase">
+              Prestige Dream Decor
+            </p>
+            <p className="text-sm text-slate-300">
+              Premium sofas and custom furniture crafted in Bengaluru, designed for modern homes
+              across India.
+            </p>
+            <Link
+              href="https://wa.me/917975709648"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+            >
+              <FaWhatsapp aria-hidden="true" />
+              Chat on WhatsApp
+            </Link>
+          </div>
 
-        <footer className="text-gray-600 body-font">
-  <div className="bg-emerald-100">
-    <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-      <p className="text-gray-500 text-sm text-center sm:text-left">© 2025 Prestige Dream Decor —
-        <a href="https://www.facebook.com/prestige.dreamdecor/" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@PrestigeDream Decor</a>
-      </p>
-     <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-  <a href="https://www.facebook.com/prestige.dreamdecor/" className="text-gray-500" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-    <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-    </svg>
-  </a>
-  <a href="https://www.instagram.com/prestige_dream_decor/" className="ml-3 text-gray-500" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
-      <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-      <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-    </svg>
-  </a>
-  {/* <a href="#" className="ml-3 text-gray-500" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
-    <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="0" className="w-5 h-5" viewBox="0 0 24 24">
-      <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-      <circle cx="4" cy="4" r="2" stroke="none"></circle>
-    </svg>
-  </a> */}
-</span>
+          <div className="space-y-3">
+            <p className="text-xs font-semibold tracking-[0.2em] text-slate-400 uppercase">
+              Links
+            </p>
+            <nav className="space-y-1 text-sm">
+              <Link href="/" className="block hover:text-amber-300">
+                Home
+              </Link>
+              <Link href="/about" className="block hover:text-amber-300">
+                About
+              </Link>
+              <Link href="/services" className="block hover:text-amber-300">
+                Shop / Services
+              </Link>
+              <Link href="/contact" className="block hover:text-amber-300">
+                Contact
+              </Link>
+            </nav>
+          </div>
 
-    </div>
-  </div>
-</footer>
-    
-  )
-}
+          <div className="space-y-3">
+            <p className="text-xs font-semibold tracking-[0.2em] text-slate-400 uppercase">
+              Contact
+            </p>
+            <div className="space-y-1 text-sm">
+              <p>Vidyaranyapura, Bengaluru</p>
+              <a href="tel:+917975709648" className="block hover:text-amber-300">
+                +91 79757 09648
+              </a>
+              <a
+                href="mailto:prestigedreamdecor@gmail.com"
+                className="block hover:text-amber-300"
+              >
+                prestigedreamdecor@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-3 pt-1">
+              <a
+                href="https://www.facebook.com/prestige.dreamdecor/"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-200 hover:bg-slate-700"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href="https://www.instagram.com/prestige_dream_decor/"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-800 text-slate-200 hover:bg-slate-700"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram />
+              </a>
+            </div>
+          </div>
+        </div>
 
-export default Footer
+        <div className="mt-8 border-t border-slate-800 pt-4 text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p>© {new Date().getFullYear()} Prestige Dream Decor. All rights reserved.</p>
+          <p>Made with care in Bengaluru, India.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

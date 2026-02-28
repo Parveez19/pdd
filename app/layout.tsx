@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from '../app/components/Navbar'
 import Footer from '../app/components/Footer'
@@ -33,7 +33,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Prestige Dream Decor", url: "https://www.prestigedreamdecor.in" }],
   creator: "Prestige Dream Decor",
-  themeColor: "#ffffff",
   metadataBase: new URL("https://www.prestigedreamdecor.in"),
   openGraph: {
     title: "Prestige Dream Decor | Custom Furniture for Your Dream Home",
@@ -51,6 +50,10 @@ export const metadata: Metadata = {
     locale: "en_IN",
     type: "website"
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
 };
 
 
