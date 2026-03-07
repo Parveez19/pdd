@@ -1,15 +1,22 @@
-import React from 'react';
-import Link from 'next/link';
-import { FaPhone } from 'react-icons/fa'; 
+"use client";
 
-const ContactButton = ({ phoneNumber = '+917975709648' }) => {
+import React from "react";
+import Link from "next/link";
+import { FaPhone } from "react-icons/fa";
+
+const PHONE = "+917975709648";
+
+const ContactButton = ({ phoneNumber = PHONE }: { phoneNumber?: string }) => {
   const telLink = `tel:${phoneNumber}`;
 
   return (
-    <Link href={telLink}>
-      <div className="fixed bottom-6 left-6 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg p-3 z-50 cursor-pointer">
-        <FaPhone size={24} />
-      </div>
+    <Link
+      href={telLink}
+      aria-label="Call Now"
+      className="fixed bottom-5 left-5 z-50 flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-3 text-white shadow-lg ring-2 ring-white/30 hover:bg-emerald-700 md:bottom-6 md:left-6 md:px-3 md:py-3"
+    >
+      <FaPhone size={22} aria-hidden />
+      <span className="text-sm font-semibold md:sr-only">Call Now</span>
     </Link>
   );
 };

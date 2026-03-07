@@ -1,6 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { FaWhatsapp, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaWhatsapp, FaFacebookF, FaInstagram, FaPhone } from "react-icons/fa";
+import { PHONE_E164, waLink, MAPS_URL } from "../lib/constants";
+
+const BOOK_MSG =
+  "Hi Prestige Dream Decor, I'd like to book a consultation. Please share available slots.";
 
 const Footer: React.FC = () => {
   return (
@@ -15,15 +19,32 @@ const Footer: React.FC = () => {
               Premium sofas and custom furniture crafted in Bengaluru, designed for modern homes
               across India.
             </p>
-            <Link
-              href="https://wa.me/917975709648"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
-            >
-              <FaWhatsapp aria-hidden="true" />
-              Chat on WhatsApp
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href={waLink(BOOK_MSG)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-emerald-700"
+              >
+                <FaWhatsapp aria-hidden="true" />
+                Book Now
+              </Link>
+              <a
+                href={`tel:${PHONE_E164}`}
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-600 bg-slate-800/80 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-700"
+              >
+                <FaPhone aria-hidden="true" />
+                Call Now
+              </a>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-amber-500/60 bg-amber-500/20 px-4 py-2 text-sm font-semibold text-amber-300 hover:bg-amber-500/30"
+              >
+                Visit Our Showroom
+              </a>
+            </div>
           </div>
 
           <div className="space-y-3">
@@ -37,7 +58,7 @@ const Footer: React.FC = () => {
               <Link href="/about" className="block hover:text-amber-300">
                 About
               </Link>
-              <Link href="/services" className="block hover:text-amber-300">
+              <Link href="/sofa-offer" className="block hover:text-amber-300">
                 Shop / Services
               </Link>
               <Link href="/contact" className="block hover:text-amber-300">

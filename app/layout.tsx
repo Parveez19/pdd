@@ -5,6 +5,7 @@ import Footer from '../app/components/Footer'
 import "./globals.css";
 import WhatsAppButton from "./components/Whatsappbtn";
 import ContactButton from "./components/Contct";
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     "Prestige Dream Decor",
     "furniture manufacturer in Bengaluru",
     "custom sofas",
-    "interior decor Karnataka",
+    "interior decor bangalore",
     "handmade furniture Bengaluru",
     "luxury furniture",
     "home decor", 
@@ -70,6 +71,7 @@ export default function RootLayout({
       <Navbar />
     </header>
     <main>{children}</main>
+    <Analytics />
     <WhatsAppButton />
     <ContactButton />
     <footer>

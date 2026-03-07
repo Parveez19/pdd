@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import {
   FaWhatsapp,
   FaStar,
@@ -42,8 +42,7 @@ const products: Product[] = [
     id: "lshape",
     title: "L-Shape Sofa (Custom Size)",
     priceRange: "₹38,999 – ₹89,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1549187774-b4e9b0445b41?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/signature-sofa.png",
     imageAlt: "Modern L-shape sofa in a warm living room",
     highlights: ["Custom layout", "Premium foam", "Fabric/Leatherette options"],
   },
@@ -51,8 +50,7 @@ const products: Product[] = [
     id: "3seater",
     title: "3-Seater Sofa",
     priceRange: "₹19,999 – ₹54,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1549497538-303791108f95?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/three-seater.webp",
     imageAlt: "Minimal 3-seater sofa in neutral tones",
     highlights: ["Comfort seating", "Multiple colors", "Easy maintenance"],
   },
@@ -60,8 +58,7 @@ const products: Product[] = [
     id: "sofacumbed",
     title: "Sofa Cum Bed",
     priceRange: "₹24,999 – ₹64,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/redsofacumbed.webp",
     imageAlt: "Convertible sofa bed in a modern apartment",
     highlights: ["Space-saving", "Guest-ready", "Durable mechanism"],
   },
@@ -69,8 +66,7 @@ const products: Product[] = [
     id: "recliner",
     title: "Recliner Sofa (Single/Double)",
     priceRange: "₹18,999 – ₹79,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/logo.png",
     imageAlt: "Recliner chair and sofa set with warm lighting",
     highlights: ["Relax mode", "Soft touch fabric", "Sturdy frame"],
   },
@@ -78,8 +74,7 @@ const products: Product[] = [
     id: "sectional",
     title: "Sectional Sofa Set",
     priceRange: "₹49,999 – ₹1,29,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "/customchocolate.webp",
     imageAlt: "Large sectional sofa with cushions",
     highlights: ["Modular seating", "Family size", "Made to order"],
   },
@@ -87,8 +82,7 @@ const products: Product[] = [
     id: "custombed",
     title: "Custom Upholstered Bed",
     priceRange: "₹22,999 – ₹74,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "",
     imageAlt: "Upholstered bed with warm beige palette",
     highlights: ["Bengaluru delivery", "Storage options", "Premium upholstery"],
   },
@@ -96,8 +90,7 @@ const products: Product[] = [
     id: "dining",
     title: "Dining Set (4/6 Seater)",
     priceRange: "₹26,999 – ₹99,999",
-    imageUrl:
-      "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "",
     imageAlt: "Dining table set in a bright home",
     highlights: ["Solid build", "Modern finish", "Custom sizes"],
   },
@@ -105,8 +98,7 @@ const products: Product[] = [
     id: "customsofa",
     title: "Fully Custom Sofa (Your Design)",
     priceRange: "Share your budget on WhatsApp",
-    imageUrl:
-      "https://images.unsplash.com/photo-1540574163026-643ea20ade25?auto=format&fit=crop&w=1600&q=80",
+    imageUrl: "",
     imageAlt: "Designer sofa in an elegant living room",
     highlights: ["Any size", "Any fabric", "Factory-direct pricing"],
   },
@@ -126,8 +118,7 @@ const testimonials: Testimonial[] = [
     name: "Ananya R.",
     area: "Vidyaranyapura",
     rating: 5,
-    photoUrl:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+    photoUrl: "/testimonial-ananya.png",
     quote:
       "We got an L-shape sofa made to exact measurements. The finishing looks premium and delivery was quicker than promised.",
     purchased: "Custom L-Shape Sofa",
@@ -136,8 +127,7 @@ const testimonials: Testimonial[] = [
     name: "Sanjay K.",
     area: "Hebbal",
     rating: 5,
-    photoUrl:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80",
+    photoUrl: "/testimonial-sanjay.png",
     quote:
       "Factory pricing is real. They helped us pick a fabric that’s easy to clean. Very comfortable and solid frame.",
     purchased: "3-Seater Sofa",
@@ -146,8 +136,7 @@ const testimonials: Testimonial[] = [
     name: "Meera S.",
     area: "Yelahanka",
     rating: 5,
-    photoUrl:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+    photoUrl: "/testimonial-meera.png",
     quote:
       "Loved the sofa cum bed quality. Installation was smooth and after-sales support was prompt.",
     purchased: "Sofa Cum Bed",
@@ -156,8 +145,7 @@ const testimonials: Testimonial[] = [
     name: "Rahul P.",
     area: "HBR Layout",
     rating: 4,
-    photoUrl:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80",
+    photoUrl: "/testimonial-rahul.png",
     quote:
       "Great value for money. They kept us updated on the build and delivered locally without hassle.",
     purchased: "Sectional Sofa Set",
@@ -211,12 +199,18 @@ export default function SofaOfferPage() {
   return (
     <div className="bg-white text-stone-900">
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section
+        className="relative overflow-hidden"
+        aria-labelledby="sofa-offer-hero-heading"
+      >
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-amber-50 via-white to-white" />
         <div className="mx-auto max-w-6xl px-4 pb-16 pt-16 sm:pb-20 sm:pt-20">
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <h1 className="mt-4 text-balance text-4xl font-extrabold tracking-tight text-stone-900 sm:text-5xl">
+              <h1
+                id="sofa-offer-hero-heading"
+                className="mt-4 text-balance text-4xl font-extrabold tracking-tight text-stone-900 sm:text-5xl"
+              >
                 Premium Sofas & Custom Furniture in Bengaluru —{" "}
                 <span className="text-emerald-700">made to fit your home</span>
               </h1>
@@ -285,7 +279,10 @@ export default function SofaOfferPage() {
       </section>
 
       {/* Trust points */}
-      <section className="border-y border-stone-100 bg-white">
+      <section
+        className="border-y border-stone-100 bg-white"
+        aria-labelledby="sofa-offer-trust-heading"
+      >
         <div className="mx-auto max-w-6xl px-4 py-14">
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {[
@@ -333,13 +330,19 @@ export default function SofaOfferPage() {
       </section>
 
       {/* Content */}
-      <section className="bg-white">
+      <section
+        className="bg-white"
+        aria-labelledby="sofa-offer-collection-heading"
+      >
         <div className="mx-auto max-w-6xl px-4 py-16">
           {/* Product grid */}
           <div id="collection" className="scroll-mt-24">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 className="text-3xl font-extrabold tracking-tight text-stone-900">
+                <h2
+                  id="sofa-offer-collection-heading"
+                  className="text-3xl font-extrabold tracking-tight text-stone-900"
+                >
                   Popular picks in Bengaluru
                 </h2>
                 <p className="mt-2 max-w-2xl text-stone-600">
@@ -364,12 +367,12 @@ export default function SofaOfferPage() {
                     className="group overflow-hidden rounded-3xl border border-stone-200 bg-white shadow-sm"
                   >
                     <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
-                      <img
+                      <Image
                         src={p.imageUrl}
                         alt={p.imageAlt}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                        loading="lazy"
-                        decoding="async"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        fill
+                        sizes="(min-width: 1024px) 50vw, 100vw"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent" />
                       <div className="absolute bottom-3 left-3 right-3">
@@ -437,10 +440,17 @@ export default function SofaOfferPage() {
           </div>
 
           {/* Testimonials */}
-          <div id="testimonials" className="mt-16 scroll-mt-24">
+          <div
+            id="testimonials"
+            className="mt-16 scroll-mt-24"
+            aria-labelledby="sofa-offer-testimonials-heading"
+          >
             <div className="flex items-end justify-between gap-4">
               <div>
-                <h2 className="text-3xl font-extrabold tracking-tight text-stone-900">
+                <h2
+                  id="sofa-offer-testimonials-heading"
+                  className="text-3xl font-extrabold tracking-tight text-stone-900"
+                >
                   Real customers. Real comfort.
                 </h2>
                 <p className="mt-2 max-w-2xl text-stone-600">
@@ -457,12 +467,13 @@ export default function SofaOfferPage() {
                   className="rounded-3xl border border-stone-200 bg-white p-6 shadow-sm"
                 >
                   <div className="flex items-start gap-4">
-                    <img
+                    <Image
                       src={t.photoUrl}
                       alt={`Photo of ${t.name}`}
-                      className="h-14 w-14 rounded-2xl object-cover"
+                      className="rounded-2xl object-cover"
+                      width={56}
+                      height={56}
                       loading="lazy"
-                      decoding="async"
                     />
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center justify-between gap-3">
