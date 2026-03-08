@@ -48,7 +48,7 @@ const catalogCategories: CatalogCategory[] = [
     id: "3-seater",
     name: "3 Seater Sofas",
     products: [
-      { id: "3s1", name: "City Comfort 3-Seater", description: "Premium customizable 3-seater sofa.", imageUrl: "/Three-seater.webp" },
+      { id: "3s1", name: "City Comfort 3-Seater", description: "Premium customizable 3-seater sofa.", imageUrl: "/three-seater.webp" },
       { id: "3s2", name: "Minimalist 3-Seater", description: "Clean lines and neutral tones for modern homes.", imageUrl: "/blue3seater.jpeg" },
       { id: "3s3", name: "Classic 3-Seater", description: "Traditional design with lasting comfort.", imageUrl: "/tradition3seater.webp" },
       { id: "3s4", name: "Compact 3-Seater", description: "Ideal for apartments and compact living spaces.", imageUrl: "/compact3.webp" },
@@ -238,7 +238,7 @@ const Home: React.FC = () => {
               id="hero-heading"
               className="mt-6 text-balance text-4xl font-extrabold tracking-tight text-black leading-tight sm:text-5xl lg:text-7xl"
             >
-              Custom‑built sofas that feel made just for your home.
+              Custom Sofas Designed for Your Home in Bangalore
             </h1>
             <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-slate-700">
               From layout to fabric, every piece is tailored to your room, your lifestyle and the premium
