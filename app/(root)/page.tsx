@@ -211,115 +211,172 @@ const heroMessage =
 const Home: React.FC = () => {
   return (
     <div className="bg-white text-slate-900">
+      {/* STICKY MOBILE CTA BAR — shown only on mobile when scrolling */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-2 border-t border-slate-200 bg-white px-4 py-3 shadow-2xl sm:hidden">
+        <a
+          href={waLink(heroMessage)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-sm font-bold text-white shadow-md active:bg-emerald-700"
+        >
+          <FaWhatsapp aria-hidden="true" className="text-base" />
+          Get Free Quote
+        </a>
+        <a
+          href={`tel:${PHONE_E164}`}
+          className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-emerald-600 py-3 text-sm font-bold text-emerald-700 active:bg-emerald-50"
+        >
+          Call Now
+        </a>
+      </div>
+
       {/* HERO */}
       <section
-        className="relative overflow-hidden"
+        className="relative overflow-hidden bg-slate-950"
         aria-labelledby="hero-heading"
+        style={{ minHeight: "100vh" }}
       >
-        <div className="absolute inset-0 -z-10">
+        {/* Background image with strong dark overlay so ALL text is readable */}
+        <div className="absolute inset-0">
           <Image
             src="/hero.png"
             alt="Premium living room with designer sofa from Prestige Dream Decor"
-            className="object-cover"
+            className="object-cover object-center opacity-40"
             fill
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
+          {/* Solid dark gradient — left heavy so left column text is always readable */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
+          {/* Bottom fade to smooth transition to white section below */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
         </div>
 
-        <div className="mx-auto flex min-h-[80vh] max-w-6xl flex-col gap-14 px-4 py-18 sm:py-24 lg:flex-row lg:items-center">
-          <div className="max-w-2xl">
-            <p className="inline-flex items-center gap-2 rounded-full bg-slate-900/60 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-amber-300">
-              Custom Sofa & Furniture Studio
-            </p>
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pt-24 pb-20 sm:pt-32 lg:flex-row lg:items-center lg:gap-16">
+          
+          {/* LEFT: Headline + CTA */}
+          <div className="flex-1 max-w-xl">
+
+            {/* Social proof pill */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-1.5">
+              <div className="flex items-center gap-0.5">
+                {[1,2,3,4,5].map(i => (
+                  <FaStar key={i} className="text-amber-400" style={{ fontSize: "10px" }} aria-hidden="true" />
+                ))}
+              </div>
+              <span className="text-xs font-semibold text-amber-300">500+ happy families in Bengaluru</span>
+            </div>
+
+            {/* Headline */}
             <h1
               id="hero-heading"
-              className="mt-6 text-balance text-4xl font-extrabold tracking-tight text-black leading-tight sm:text-5xl lg:text-7xl"
+              className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-[56px]"
             >
-              Custom Sofas Designed for Your Home in Bangalore
+              Custom Sofas Built{" "}
+              <span className="text-amber-400">Perfectly for Your Home</span>{" "}
+              in Bangalore
             </h1>
-            <p className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-slate-700">
-              From layout to fabric, every piece is tailored to your room, your lifestyle and the premium
-              comfort you expect.
+
+            {/* Sub-headline */}
+            <p className="mt-5 text-base leading-relaxed text-slate-300 sm:text-lg">
+              Tell us your room size, pick your fabric — we build, deliver, and install it{" "}
+              <span className="font-semibold text-white">free anywhere in Bengaluru.</span>
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            {/* CTA buttons */}
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={waLink(heroMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-base font-semibold text-white shadow-lg ring-2 ring-emerald-400/40 hover:bg-emerald-700 sm:w-auto"
+                className="inline-flex items-center justify-center gap-2.5 rounded-xl bg-emerald-500 px-7 py-4 text-base font-bold text-white shadow-lg shadow-emerald-900/40 hover:bg-emerald-400 transition-colors"
               >
-                <FaWhatsapp aria-hidden="true" className="text-lg" />
-                Book Now
+                <FaWhatsapp aria-hidden="true" className="text-xl" />
+                Get Free Quote on WhatsApp
               </a>
               <a
                 href={`tel:${PHONE_E164}`}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200/40 bg-white/10 px-5 py-3 text-base font-semibold text-white shadow-sm backdrop-blur-sm hover:bg-white/20 sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/8 px-7 py-4 text-base font-semibold text-white hover:bg-white/15 transition-colors"
               >
-                Call Now
+                📞 Call Now
               </a>
-              <Link
-                href="/#showroom"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200/40 bg-white/10 px-5 py-3 text-base font-semibold text-white shadow-sm backdrop-blur-sm hover:bg-white/20 sm:w-auto"
-              >
-                Visit Our Showroom
-              </Link>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-xs text-slate-900/80">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                10+ years of furniture expertise
-              </div>
-              <div className="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
-                Factory-direct pricing & pan-India delivery
-              </div>
+            {/* Reassurances */}
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-slate-400">
+              <span className="flex items-center gap-1.5">
+                <FaRegCircleCheck className="text-emerald-400 shrink-0" aria-hidden="true" />
+                Reply in under 30 min
+              </span>
+              <span className="flex items-center gap-1.5">
+                <FaRegCircleCheck className="text-emerald-400 shrink-0" aria-hidden="true" />
+                Free delivery &amp; installation
+              </span>
+              <span className="flex items-center gap-1.5">
+                <FaRegCircleCheck className="text-emerald-400 shrink-0" aria-hidden="true" />
+                No sales pressure
+              </span>
+            </div>
+
+            {/* Trust badges */}
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {[
+                { dot: "bg-emerald-400", label: "10+ years of expertise" },
+                { dot: "bg-amber-400", label: "Factory-direct pricing" },
+                { dot: "bg-sky-400", label: "Bengaluru studio" },
+              ].map((b) => (
+                <div key={b.label} className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60">
+                  <span className={`h-1.5 w-1.5 shrink-0 rounded-full ${b.dot}`} />
+                  {b.label}
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="mt-8 w-full max-w-sm lg:mt-0 lg:ml-auto">
-            <div className="overflow-hidden rounded-3xl border border-slate-800/70 bg-slate-950/40 backdrop-blur-sm shadow-xl">
-              <div className="border-b border-slate-800/60 bg-slate-950/40 px-5 py-4">
-                <p className="text-[13px] font-semibold text-amber-300">
-                  Get a WhatsApp quote in 3 steps
-                </p>
-                <p className="mt-1 text-xs text-slate-200/90">
-                  Share your room photos, size and budget. Our team will reply with curated options.
-                </p>
+          {/* RIGHT: Quote card — solid dark background so it always pops */}
+          <div className="w-full max-w-[340px] shrink-0 lg:ml-auto">
+            <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-2xl">
+              {/* Card header */}
+              <div className="bg-emerald-600 px-5 py-4">
+                <p className="text-sm font-bold text-white">⚡ Get your price in 3 easy steps</p>
+                <p className="mt-0.5 text-xs text-emerald-100">No commitment. Real answers from our team — not bots.</p>
               </div>
-              <div className="space-y-3 px-5 py-5 text-xs text-slate-100">
+              {/* Steps */}
+              <div className="space-y-2.5 px-5 py-5">
                 {[
-                  "Send us your room size & a reference photo",
-                  "Pick fabrics, comfort level & layout",
-                  "Get price range + delivery timeline",
+                  { num: "1", text: "Send your room size & a photo" },
+                  { num: "2", text: "Pick fabric, colour & comfort level" },
+                  { num: "3", text: "Get exact price + delivery date" },
                 ].map((step) => (
                   <div
-                    key={step}
-                    className="flex items-center gap-3 rounded-2xl bg-slate-900/70 px-3 py-3 ring-1 ring-slate-700/70"
+                    key={step.num}
+                    className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/8"
                   >
-                    <span className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-500 text-white">
-                      <FaRegCircleCheck aria-hidden="true" />
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-emerald-500 text-[11px] font-black text-white">
+                      {step.num}
                     </span>
-                    <span>{step}</span>
+                    <span className="text-xs font-medium text-slate-200">{step.text}</span>
                   </div>
                 ))}
               </div>
-              <div className="border-t border-slate-800/60 bg-slate-950/50 px-5 py-4">
-                <WhatsAppCta
-                  message={heroMessage}
-                  className="w-full text-sm"
-                />
-                <p className="mt-2 text-[11px] text-slate-400">
-                  Response within business hours. No automated bots — you chat directly with our
-                  team.
+              {/* Card footer CTA */}
+              <div className="border-t border-white/8 bg-slate-950/60 px-5 py-4">
+                <a
+                  href={waLink(heroMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 transition-colors"
+                >
+                  <FaWhatsapp aria-hidden="true" className="text-base" />
+                  Start on WhatsApp — It&apos;s Free
+                </a>
+                <p className="mt-2.5 text-center text-[10px] text-slate-500">
+                  🔒 You talk to our team directly. No bots, no spam.
                 </p>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -541,6 +598,126 @@ const Home: React.FC = () => {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MID-PAGE CTA BAND */}
+      <section className="bg-emerald-700" aria-label="Call to action">
+        <div className="mx-auto max-w-5xl px-4 py-12 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">Ready to get started?</p>
+          <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
+            Get your custom sofa price in 30 minutes
+          </h2>
+          <p className="mt-2 text-sm text-emerald-100">
+            No showroom visit needed. Share your room size on WhatsApp — we'll quote, design and deliver.
+          </p>
+          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <a
+              href={waLink("Hi Prestige Dream Decor, I'd like a quote for a custom sofa for my home. Please guide me.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-emerald-700 shadow-xl hover:bg-emerald-50 transition-colors"
+            >
+              <FaWhatsapp aria-hidden="true" className="text-base" />
+              Get Free Quote Now
+            </a>
+            <a
+              href={`tel:${PHONE_E164}`}
+              className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              📞 Call Us
+            </a>
+          </div>
+          <p className="mt-4 text-[11px] text-emerald-300">Free delivery & installation · No pressure · Reply in &lt;30 min</p>
+        </div>
+      </section>
+
+      {/* FAQ SECTION */}
+      <section
+        className="border-t border-slate-100 bg-white"
+        aria-labelledby="faq-heading"
+      >
+        <div className="mx-auto max-w-3xl px-4 py-20">
+          <div className="mb-10 text-center">
+            <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-600">Common Questions</p>
+            <h2
+              id="faq-heading"
+              className="text-3xl font-extrabold tracking-tight text-slate-900"
+            >
+              Everything you want to know before ordering
+            </h2>
+            <p className="mt-3 text-sm text-slate-500">
+              We answer these every day on WhatsApp — here they are upfront.
+            </p>
+          </div>
+
+          <div className="divide-y divide-slate-100">
+  {[
+    {
+      q: "How much does a custom sofa cost in Bangalore?",
+      a: "The price depends on the size, fabric, and design you choose. Most custom sofas range between ₹25,000 and ₹90,000. Share your room size and requirements on WhatsApp and we’ll send you a precise quote within 30 minutes.",
+    },
+    {
+      q: "How long does it take to manufacture and deliver a custom sofa?",
+      a: "Most custom sofas are ready within 4–8 working days after order confirmation. We share updates during production and schedule delivery once your sofa is ready.",
+    },
+    {
+      q: "Which sofa is best for small apartments?",
+      a: "Compact 3-seater sofas and L-shape sofas with storage are popular choices for smaller living rooms. Our team helps you select a design that fits your room dimensions and layout perfectly.",
+    },
+    {
+      q: "Do you offer free sofa delivery and installation in Bangalore?",
+      a: "Yes. We provide free delivery and professional installation for all orders within Bengaluru. Our team ensures the sofa is properly placed and assembled in your home.",
+    },
+    {
+      q: "Can I customize the sofa size, fabric, and color?",
+      a: "Absolutely. Every sofa we make is fully customizable. You can choose the size, fabric material, color, cushioning, and design to match your home interiors.",
+    },
+    {
+      q: "Can I see fabric samples before ordering?",
+      a: "Yes. You can visit our Vidyaranyapura showroom to check fabrics and designs in person. If visiting isn’t convenient, we can also share fabric options and details over WhatsApp.",
+    },
+    {
+      q: "Do you make L-shape sofas and sofa cum beds?",
+      a: "Yes. We manufacture L-shape sofas, 3-seater sofas, sofa cum beds, and fully custom sofa designs based on your space and comfort preferences.",
+    },
+    {
+      q: "How do I start ordering a custom sofa?",
+      a: "Simply send us a message on WhatsApp with your room photo, approximate dimensions, and preferred design. Our team will recommend suitable options and share a quote quickly.",
+    },
+  
+
+            ].map((item, i) => (
+              <details
+                key={i}
+                className="group py-5"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-slate-900 hover:text-emerald-700">
+                  <span>{item.q}</span>
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-slate-100 text-slate-500 group-open:bg-emerald-100 group-open:text-emerald-700 transition-colors text-xs font-bold">
+                    <span className="group-open:hidden">+</span>
+                    <span className="hidden group-open:block">−</span>
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{item.a}</p>
+              </details>
+            ))}
+          </div>
+
+          {/* FAQ bottom CTA */}
+          <div className="mt-10 rounded-3xl bg-emerald-50 border border-emerald-100 px-6 py-6 text-center">
+            <p className="text-sm font-semibold text-slate-800">Still have a question?</p>
+            <p className="mt-1 text-xs text-slate-500">Ask us directly — we reply in under 30 minutes during business hours.</p>
+            <a
+              href={waLink("Hi Prestige Dream Decor, I have a question about ordering a custom sofa.")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white shadow hover:bg-emerald-700 transition-colors"
+            >
+              <FaWhatsapp aria-hidden="true" />
+              Ask on WhatsApp
+            </a>
           </div>
         </div>
       </section>

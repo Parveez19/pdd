@@ -268,7 +268,7 @@ const AboutPage: React.FC = () => {
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="relative h-52 overflow-hidden rounded-3xl bg-slate-100 shadow-sm sm:h-56">
                 <img
-                  src="/hero.png"
+                  src="/showroom.jpeg"
                   alt="Prestige Dream Decor showroom interior with premium sofas"
                   className="h-full w-full object-cover"
                   loading="lazy"
@@ -284,7 +284,7 @@ const AboutPage: React.FC = () => {
               </div>
               <div className="relative h-52 overflow-hidden rounded-3xl bg-slate-100 shadow-sm sm:h-56">
                 <img
-                  src="/hero2.png"
+                  src="/factory.jpeg"
                   alt="Prestige Dream Decor factory and craftsmen at work"
                   className="h-full w-full object-cover"
                   loading="lazy"
