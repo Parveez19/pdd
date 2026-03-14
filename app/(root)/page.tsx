@@ -326,7 +326,7 @@ const Home: React.FC = () => {
             </div>
 
             <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[12px] text-slate-400">
-              {["Reply in under 30 min", "Free delivery & installation", "No sales pressure"].map(t => (
+              {["Reply in under 30 min", "Free delivery & installation", "Easy EMI Options"].map(t => (
                 <span key={t} className="flex items-center gap-1.5">
                   <FaRegCircleCheck className="text-emerald-400 shrink-0" aria-hidden="true" />
                   {t}
@@ -404,7 +404,7 @@ const Home: React.FC = () => {
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { title: "10+ years of sofa craftsmanship", desc: "Specialised in premium sofas and upholstered furniture for Indian homes.", icon: <FaCouch className="text-amber-700" aria-hidden="true" /> },
-              { title: "Made to fit your room", desc: "Size, layout and comfort tailored to your exact room measurements.", icon: <FaRegCircleCheck className="text-amber-700" aria-hidden="true" /> },
+              { title: "Easy EMI Options", desc: "Flexible payments for select orders.", icon: <FaRegCircleCheck className="text-amber-700" aria-hidden="true" /> },
               { title: "Free delivery & installation", desc: "Free delivery and professional installation in and around Bengaluru.", icon: <FaTruckFast className="text-amber-700" aria-hidden="true" /> },
               { title: "Curated performance fabrics", desc: "Stain-resistant, pet-friendly upholstery options tested for daily use.", icon: <FaShieldHalved className="text-amber-700" aria-hidden="true" /> },
             ].map(item => (

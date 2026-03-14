@@ -22,26 +22,22 @@ const Navbar = () => {
             <Link href="/sofa-offer" className="hover:text-emerald-100 transition-colors">Services</Link>
           </li>
           <li>
+            <Link href="/l-shape-sofas" className="hover:text-emerald-100 transition-colors">L-Shape Sofas</Link>
+          </li>
+          <li>
+            <Link href="/custom-sofas" className="hover:text-emerald-100 transition-colors">Custom Sofas</Link>
+          </li>
+          <li>
+            <Link href="/dining-tables" className="hover:text-emerald-100 transition-colors">Dining Tables</Link>
+          </li>
+
+          <li>
             <Link href="/about" className="hover:text-emerald-100 transition-colors hidden sm:inline">About Us</Link>
           </li>
           <li>
             <Link href="/contact" className="hover:text-emerald-100 transition-colors hidden sm:inline">Contact Us</Link>
           </li>
-          <li className="flex items-center gap-2 border-l border-emerald-400/50 pl-2 sm:pl-4">
-            <a
-              href={waLink(BOOK_MSG)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-white/20 px-3 py-1.5 text-sm font-semibold hover:bg-white/30"
-            >
-              Book Now
-            </a>
-            <a
-              href={`tel:${PHONE_E164}`}
-              className="rounded-lg bg-white/20 px-3 py-1.5 text-sm font-semibold hover:bg-white/30"
-            >
-              Call Now
-            </a>
+          <li className="flex items-center gap-2 border-l border-emerald-400/50 pl-2 sm:pl-4">           
             <Link
               href="/#showroom"
               className="hidden rounded-lg bg-amber-400 px-3 py-1.5 text-sm font-semibold text-slate-900 hover:bg-amber-300 sm:inline-block"
