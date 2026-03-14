@@ -6,6 +6,7 @@ import "./globals.css";
 import WhatsAppButton from "./components/Whatsappbtn";
 import CallButton from "./components/CallButton"
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -102,6 +103,20 @@ export default function RootLayout({
 
         <main>{children}</main>
 
+            {/* <!-- Google tag (gtag.js) --> */}
+          <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-16478617068"
+          strategy="afterInteractive"
+        />
+
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-16478617068');
+          `}
+        </Script>
         <Analytics />
 
         <WhatsAppButton />

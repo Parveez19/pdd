@@ -22,14 +22,16 @@ const Navbar = () => {
             <Link href="/sofa-offer" className="hover:text-emerald-100 transition-colors">Services</Link>
           </li>
           <li>
-            <Link href="/l-shape-sofas" className="hover:text-emerald-100 transition-colors">L-Shape Sofas</Link>
+            <Link href="/l-shape-sofas" className="hover:text-emerald-100 transition-colors">L Shape Sofas</Link>
           </li>
+           
           <li>
             <Link href="/custom-sofas" className="hover:text-emerald-100 transition-colors">Custom Sofas</Link>
           </li>
           <li>
             <Link href="/dining-tables" className="hover:text-emerald-100 transition-colors">Dining Tables</Link>
           </li>
+
 
           <li>
             <Link href="/about" className="hover:text-emerald-100 transition-colors hidden sm:inline">About Us</Link>
