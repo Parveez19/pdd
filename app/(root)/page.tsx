@@ -14,7 +14,46 @@ import {
 export const metadata: Metadata = {
   title: "Custom Sofas & Furniture in Bengaluru | Prestige Dream Decor",
   description:
-    "Order custom-built sofas, sofa cum beds and premium furniture in Bengaluru. Tailored to your room size, layout and comfort with factory-direct pricing.",
+    "Order custom-built sofas, sofa cum beds and premium furniture in Bengaluru. Starting from ₹34,999. Tailored to your room size, delivered in 7–15 days with free installation.",
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How much does a custom sofa cost in Bangalore?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Custom sofas start from ₹34,999, depending on size, fabric quality and design. Most orders fall between ₹34,999 and ₹1,20,999. WhatsApp us for a precise quote within 30 minutes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How long does custom sofa delivery take in Bangalore?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most orders are delivered within 7–15 working days after confirmation, depending on design complexity. Simple sofas are often completed in 7–10 days.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do you offer free delivery and installation in Bangalore?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. We provide free delivery and professional installation for all orders within Bengaluru.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I customise the size, fabric, and colour?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Absolutely. Every piece is fully customisable — size, fabric, colour, cushioning and design to match your home interiors.",
+      },
+    },
+  ],
 };
 
 import { PHONE_E164, ADDRESS, waLink } from "../lib/constants";
@@ -28,6 +67,8 @@ type CatalogProduct = {
   name: string;
   description: string;
   imageUrl: string;
+  startingPrice?: string;
+  deliveryDays?: string;
 };
 
 type CatalogCategory = {
@@ -48,9 +89,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "L-Shape Sofas",
     slug: "/l-shape-sofas",
     products: [
-      { id: "l1", name: "Signature L-Shape Sofa", description: "Premium customizable L-shape sofa for your living room.", imageUrl: "/brownlsofa.jpeg" },
-      { id: "l2", name: "Classic L-Shape", description: "Timeless L-shape with durable frame and soft cushions.", imageUrl: "/whitelsofa.jpeg" },
-      { id: "l3", name: "Compact L-Shape", description: "Space-efficient L-shape ideal for smaller rooms.", imageUrl: "/greenlshape.webp" },
+      { id: "l1", name: "Signature L-Shape Sofa", description: "Built to your exact dimensions in our Bangalore workshop. Choose from 40+ fabrics. Free delivery & installation.", imageUrl: "/brownlsofa.jpeg", startingPrice: "₹29,999", deliveryDays: "7–15 days" },
+      { id: "l2", name: "Classic L-Shape", description: "Timeless L-shape with engineered hardwood frame and high-density foam. Customise size, fabric and leg finish.", imageUrl: "/heroimage.jpeg", startingPrice: "₹29,999", deliveryDays: "7–15 days" },
+      { id: "l3", name: "Compact L-Shape", description: "Space-efficient L-shape designed for smaller rooms and apartments across Bangalore. Custom dimensions available.", imageUrl: "/greyLshape.jpeg", startingPrice: "₹29,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -58,9 +99,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "3 Seater Sofas",
     slug: "/3-seater-sofas",
     products: [
-      { id: "3s1", name: "City Comfort 3-Seater", description: "Premium customizable 3-seater sofa.", imageUrl: "/three-seater.webp" },
-      { id: "3s2", name: "Minimalist 3-Seater", description: "Clean lines and neutral tones for modern homes.", imageUrl: "/blue3seater.jpeg" },
-      { id: "3s3", name: "Classic 3-Seater", description: "Traditional design with lasting comfort.", imageUrl: "/tradition3seater.webp" },
+      { id: "3s1", name: "City Comfort 3-Seater", description: "Premium 3-seater built to order in our Bangalore studio. Pick your fabric, depth and arm style.", imageUrl: "/three-seater.webp", startingPrice: "₹18,999", deliveryDays: "7–12 days" },
+      { id: "3s2", name: "Minimalist 3-Seater", description: "Clean lines and neutral tones for modern Bangalore homes. Fully customisable dimensions and upholstery.", imageUrl: "/blue3seater.jpeg", startingPrice: "₹19,999", deliveryDays: "7–12 days" },
+      { id: "3s3", name: "Classic 3-Seater", description: "Traditional design with lasting comfort. Engineered frame, custom fabric selection, free installation.", imageUrl: "/tradition3seater.webp", startingPrice: "₹19,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -68,9 +109,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Sofa Cum Beds",
     slug: "/sofa-cum-beds",
     products: [
-      { id: "scb2", name: "Premium Sofa Cum Bed", description: "Comfortable by day, cozy bed by night.", imageUrl: "/redsofacumbed.webp" },
-      { id: "scb4", name: "Designer Sofa Cum Bed", description: "Sleek mechanism with premium finish.", imageUrl: "/designercumbed.webp" },
-      { id: "scb5", name: "Family Sofa Cum Bed", description: "Extra seating and extra sleeping space.", imageUrl: "/white-sofabed.jpg" },
+      { id: "scb2", name: "Premium Sofa Cum Bed", description: "Comfortable seating by day, smooth fold-out bed by night. Custom sizes built for your guest room.", imageUrl: "/redsofacumbed.webp", startingPrice: "₹29,999", deliveryDays: "10–15 days" },
+      { id: "scb4", name: "Designer Sofa Cum Bed", description: "Sleek mechanism with premium finish. Ideal for studio apartments and compact 2BHKs across Bangalore.", imageUrl: "/designercumbed.webp", startingPrice: "₹29,999", deliveryDays: "10–15 days" },
+      { id: "scb5", name: "Family Sofa Cum Bed", description: "Extra seating and generous sleeping space. Built wide to accommodate the whole family.", imageUrl: "/white-sofabed.jpg", startingPrice: "₹29,999", deliveryDays: "10–15 days" },
     ],
   },
   {
@@ -78,9 +119,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Custom Sofas",
     slug: "/custom-sofas",
     products: [
-      { id: "c2", name: "Designer Custom Sofa", description: "One-of-a-kind design tailored to your space.", imageUrl: "/customchocolate.webp" },
-      { id: "c3", name: "Modular Custom Set", description: "Modular pieces you can configure as you like.", imageUrl: "/modularcustom.webp" },
-      { id: "c4", name: "Compact Custom Sofa", description: "Custom-built for small or irregular spaces.", imageUrl: "/compactspacesaver.webp" },
+      { id: "c2", name: "Designer Custom Sofa", description: "Fully bespoke — your dimensions, your fabric, your design. Built in our Bangalore workshop to match your exact brief.", imageUrl: "/customchocolate.webp", startingPrice: "₹41,999", deliveryDays: "7–15 days" },
+      { id: "c3", name: "Modular Custom Set", description: "Modular pieces you can configure as you like. Expand, rearrange or add sections later — fully custom-built.", imageUrl: "/CustomPremiumsofa.jpeg", startingPrice: "₹34,999", deliveryDays: "10–15 days" },
+      { id: "c4", name: "Compact Custom Sofa", description: "Custom-built for small or irregular spaces. We measure, design and build to fit your room perfectly.", imageUrl: "/compactspacesaver.webp", startingPrice: "₹34,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -88,9 +129,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Dining Tables",
     slug: "/dining-tables",
     products: [
-      { id: "dt1", name: "4-Seater Dining Set", description: "Compact and modern dining set for smaller homes.", imageUrl: "/diningtable1.jpeg" },
-      { id: "dt2", name: "6-Seater Dining Table", description: "Family-sized dining table with premium finish.", imageUrl: "/6seaterdining.webp" },
-      { id: "dt3", name: "Glass-Top Dining Table", description: "Elegant glass top with solid wood base.", imageUrl: "/diningtable2.jpeg" },
+      { id: "dt1", name: "4-Seater Dining Set", description: "Compact and modern dining set built to order for smaller Bangalore homes. Custom wood finish and table size.", imageUrl: "/diningtable1.jpeg", startingPrice: "₹12,999", deliveryDays: "7–12 days" },
+      { id: "dt2", name: "6-Seater Dining Table", description: "Family-sized dining table with premium finish. Choose your wood tone, leg style and chair upholstery.", imageUrl: "/6seaterdining.webp", startingPrice: "₹21,999", deliveryDays: "10–15 days" },
+      { id: "dt3", name: "Glass-Top Dining Table", description: "Elegant tempered glass top with solid wood base. Custom dimensions and base finish available.", imageUrl: "/marbletopdining.jpeg", startingPrice: "₹24,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -98,9 +139,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Recliners",
     slug: "/recliners",
     products: [
-      { id: "r1", name: "Single Recliner Chair", description: "Manual reclining chair for reading and relaxing.", imageUrl: "/recliner1.jpeg" },
-      { id: "r2", name: "2-Seater Recliner Sofa", description: "Dual-action recliner for couples and pairs.", imageUrl: "/reclinersofa.webp" },
-      { id: "r3", name: "Home Theatre Recliner", description: "Premium 4-seat configuration for your media room.", imageUrl: "/reclinerhome.jpeg" },
+      { id: "r1", name: "Single Recliner Chair", description: "Manual reclining chair ideal for reading nooks and media rooms. Custom upholstery and colour options.", imageUrl: "/recliner1.jpeg", startingPrice: "₹21,999", deliveryDays: "7–12 days" },
+      { id: "r2", name: "2-Seater Recliner Sofa", description: "Dual-action recliner for couples. Premium mechanism with full fabric customisation.", imageUrl: "/reclinersofa.webp", startingPrice: "₹37,999", deliveryDays: "10–15 days" },
+      { id: "r3", name: "Home Theatre Recliner", description: "Premium 4-seat configuration for your media room. Built to your row dimensions, delivered across Bangalore.", imageUrl: "/reclinerhome.jpeg", startingPrice: "₹41,999", deliveryDays: "10–15 days" },
     ],
   },
   {
@@ -108,9 +149,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Beds",
     slug: "/beds",
     products: [
-      { id: "b1", name: "Upholstered Platform Bed", description: "Fabric headboard with clean platform design.", imageUrl: "/bed1.jpeg" },
-      { id: "b2", name: "Storage Bed", description: "Hydraulic lift storage — perfect for smaller bedrooms.", imageUrl: "/upholdbed.jpeg"  },
-      { id: "b3", name: "Luxury Tufted Bed", description: "Premium velvet tufted headboard, custom sizes.", imageUrl: "/bed2.jpeg" },
+      { id: "b1", name: "Upholstered Platform Bed", description: "Fabric headboard with clean platform design. Custom sizes from single to king — built in our Bangalore studio.", imageUrl: "/bed1.jpeg", startingPrice: "₹29,999", deliveryDays: "7–12 days" },
+      { id: "b2", name: "Storage Bed", description: "Hydraulic lift storage — perfect for smaller bedrooms. Custom fabric headboard and box size available.", imageUrl: "/upholdbed.jpeg", startingPrice: "₹18,999", deliveryDays: "10–15 days" },
+      { id: "b3", name: "Luxury Tufted Bed", description: "Premium velvet tufted headboard in custom sizes. A statement piece built to your exact room dimensions.", imageUrl: "/bed2.jpeg", startingPrice: "₹16,999", deliveryDays: "10–15 days" },
     ],
   },
 ];
@@ -213,6 +254,21 @@ function CatalogCard({ product, getQuoteMessage }: { product: CatalogProduct; ge
       <div className="flex flex-1 flex-col p-4">
         <h3 className="text-sm font-semibold text-slate-900">{product.name}</h3>
         <p className="mt-1 line-clamp-2 text-xs text-slate-500">{product.description}</p>
+        {(product.startingPrice || product.deliveryDays) && (
+          <div className="mt-3 flex items-center justify-between gap-2">
+            {product.startingPrice && (
+              <span className="text-sm font-bold text-emerald-700">
+                From {product.startingPrice}
+              </span>
+            )}
+            {product.deliveryDays && (
+              <span className="flex items-center gap-1 text-[11px] text-slate-400">
+                <FaTruckFast aria-hidden="true" className="shrink-0" />
+                {product.deliveryDays}
+              </span>
+            )}
+          </div>
+        )}
         <a
           href={waLink(getQuoteMessage)}
           target="_blank"
@@ -241,24 +297,33 @@ const heroMessage =
 const Home: React.FC = () => {
   return (
     <div className="bg-white text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       {/* ── STICKY MOBILE CTA BAR ─────────────────────────────────────── */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center gap-2 border-t border-slate-200 bg-white px-4 py-3 shadow-2xl sm:hidden">
-        <a
-          href={waLink(heroMessage)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-sm font-bold text-white active:bg-emerald-700"
-        >
-          <FaWhatsapp aria-hidden="true" className="text-base" />
-          Get Free Quote
-        </a>
-        <a
-          href={`tel:${PHONE_E164}`}
-          className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-emerald-600 py-3 text-sm font-bold text-emerald-700 active:bg-emerald-50"
-        >
-          📞 Call Now
-        </a>
+      <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white shadow-2xl sm:hidden">
+        <div className="px-4 pt-1.5 pb-0.5 text-center">
+          <span className="text-[10px] text-slate-400">Custom sofas from <strong className="text-emerald-700">₹34,999</strong> · Delivered in 7–15 days</span>
+        </div>
+        <div className="flex items-center gap-2 px-4 pb-3">
+          <a
+            href={waLink(heroMessage)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-sm font-bold text-white active:bg-emerald-700"
+          >
+            <FaWhatsapp aria-hidden="true" className="text-base" />
+            Get Free Quote
+          </a>
+          <a
+            href={`tel:${PHONE_E164}`}
+            className="flex flex-1 items-center justify-center gap-2 rounded-xl border-2 border-emerald-600 py-3 text-sm font-bold text-emerald-700 active:bg-emerald-50"
+          >
+            📞 Call Now
+          </a>
+        </div>
       </div>
 
       {/* ── HERO ──────────────────────────────────────────────────────── */}
@@ -269,7 +334,7 @@ const Home: React.FC = () => {
       >
         <div className="absolute inset-0">
           <Image
-            src="/hero.png"
+            src="/heroimage.jpeg"
             alt="Premium living room with designer sofa from Prestige Dream Decor"
             className="object-cover object-center opacity-40"
             fill
@@ -290,7 +355,14 @@ const Home: React.FC = () => {
                   <FaStar key={i} className="text-amber-400" style={{ fontSize: "10px" }} aria-hidden="true" />
                 ))}
               </div>
-              <span className="text-xs font-semibold text-amber-300">500+ happy families in Bengaluru</span>
+              <a
+                href="https://www.google.com/maps/place/Prestige+Dream+Decor/@13.0683529,77.557453,17z/data=!4m8!3m7!1s0x3bae23614ecb9453:0xe40430f5c46bba6d!8m2!3d13.0683529!4d77.5600279!9m1!1b1!16s%2Fg%2F11wxsy25nf?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-semibold text-amber-300 hover:text-amber-200 transition-colors"
+              >
+                4.9★ · 26 reviews on Google →
+              </a>
             </div>
 
             <h1
@@ -306,6 +378,12 @@ const Home: React.FC = () => {
               Tell us your room size, pick your fabric — we build, deliver, and install it{" "}
               <span className="font-semibold text-white">free anywhere in Bengaluru.</span>
             </p>
+
+            <div className="mt-4 inline-flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5">
+              <span className="text-sm font-bold text-emerald-400">Custom sofas from ₹34,999</span>
+              <span className="hidden sm:block h-3 w-px bg-white/20" />
+              <span className="text-xs text-slate-400">Delivered in 7–15 days · No hidden costs</span>
+            </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
@@ -520,11 +598,22 @@ const Home: React.FC = () => {
             {/* Testimonials */}
             <div>
               <h2 id="testimonials-heading" className="text-3xl font-extrabold tracking-tight text-slate-900">
-                Loved by families across India
+                Loved by families across Bangalore
               </h2>
               <p className="mt-2 max-w-xl text-sm text-slate-500">
                 Real homes, real stories. Customers trust Prestige Dream Decor for premium finishing, transparent pricing and on-time delivery.
               </p>
+              <a
+                href="https://www.google.com/maps/place/Prestige+Dream+Decor/@13.0683529,77.557453,17z/data=!4m8!3m7!1s0x3bae23614ecb9453:0xe40430f5c46bba6d!8m2!3d13.0683529!4d77.5600279!9m1!1b1!16s%2Fg%2F11wxsy25nf?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-4 py-1.5 text-xs font-semibold text-amber-800 hover:bg-amber-100 transition-colors"
+              >
+                <span className="flex items-center gap-0.5">
+                  {[1,2,3,4,5].map(i => <FaStar key={i} className="text-amber-400" style={{ fontSize: "9px" }} aria-hidden="true" />)}
+                </span>
+                4.9 · 26 reviews on Google — See all →
+              </a>
               <div className="mt-6 grid gap-5 md:grid-cols-2">
                 {testimonials.map(t => (
                   <figure key={t.name} className="flex flex-col gap-3 rounded-3xl border border-slate-100 bg-white p-4 shadow-sm">
@@ -541,7 +630,7 @@ const Home: React.FC = () => {
                         <div className="flex items-center justify-between gap-2">
                           <div>
                             <p className="text-sm font-semibold text-slate-900">{t.name}</p>
-                            <p className="text-[11px] text-slate-500">{t.city}, India</p>
+                            <p className="text-[11px] text-slate-500">{t.city}, Bangalore</p>
                           </div>
                           <Stars rating={t.rating} />
                         </div>
@@ -641,11 +730,11 @@ const Home: React.FC = () => {
             {[
               {
                 q: "How much does a custom sofa cost in Bangalore?",
-                a: "The price depends on the size, fabric, and design you choose. Most custom sofas range between ₹25,000 and ₹90,000. Share your room size and requirements on WhatsApp and we'll send you a precise quote within 30 minutes.",
+                a: "Custom sofas start from ₹34,999, depending on the size, fabric quality and design you choose. Most orders fall between ₹34,999 and ₹1,20,999. Share your room size and requirements on WhatsApp and we'll send you a precise quote within 30 minutes.",
               },
               {
                 q: "How long does it take to manufacture and deliver?",
-                a: "Most orders are ready within 4–8 working days after confirmation. We share production updates along the way and schedule delivery once your furniture is ready.",
+                a: "Most orders are ready and delivered within 7–15 working days after confirmation, depending on the complexity of the design. Simple sofas are often completed in 7–10 days. We share production updates along the way and schedule delivery once your furniture is ready.",
               },
               {
                 q: "Which sofa is best for small apartments?",

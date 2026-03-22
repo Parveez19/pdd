@@ -497,12 +497,14 @@ export const lShapeConfig: CategoryConfig = {
   recommendationWaMessage:
     "Hi Prestige Dream Decor, I need help choosing an L-shape sofa for my living room. Can you recommend options based on my room size?",
   products: [
-    { id: "l1", name: "Signature L-Shape Sofa", tag: "Custom sizes available", imageUrl: "/brownlsofa.jpeg" },
+    { id: "l1", name: "Signature L-Shape Sofa", tag: "Custom sizes available", imageUrl: "/greyLshape.jpeg" },
     { id: "l2", name: "Modern Corner Sofa", tag: "Premium upholstery", imageUrl: "/heroimage.jpeg" },
     { id: "l3", name: "Classic L-Shape", tag: "Timeless design", imageUrl: "/whitelsofa.jpeg" },
     { id: "l4", name: "Compact L-Shape", tag: "Space-saving fit", imageUrl: "/greenlshape.webp" },
-    { id: "l5", name: "Luxury L-Shape", tag: "50+ fabric options", imageUrl: "/blackpremium.jpg" },
-    { id: "l6", name: "Sectional L-Shape", tag: "Modular configuration", imageUrl: "/classic-blue-lshape.jpeg" },
+    { id: "l5", name: "Chocolate black L-Shape", tag: "On Customer demand", imageUrl: "/chocoLshape.jpeg" },
+    { id: "l6", name: "Luxury L-Shape", tag: "50+ fabric options", imageUrl: "/blackpremium.jpg" },
+    { id: "l7", name: "Sectional L-Shape", tag: "Modular configuration", imageUrl: "/classic-blue-lshape.jpeg" },
+    { id: "l8", name: "SeaBlue L-Shape", tag: "Premium Blue ", imageUrl: "/SeaBlueLshape.jpeg" },
   ],
   faqs: [
     ...defaultFaqs,
@@ -570,6 +572,7 @@ export const sofaCumBedConfig: CategoryConfig = {
     { id: "scb4", name: "Designer Sofa Cum Bed", tag: "Sleek premium finish", imageUrl: "/designercumbed.webp" },
     { id: "scb5", name: "Family Sofa Cum Bed", tag: "Extra sleeping space", imageUrl: "/white-sofabed.jpg" },
     { id: "scb6", name: "Luxury Sofa Cum Bed", tag: "50+ fabric options", imageUrl: "/sectionalcumbed.jpeg" },
+    { id: "scb7", name: "Luxury Blue Sofa Cum Bed", tag: "50+ fabric options", imageUrl: "/familycustom.jpeg" },
   ],
   faqs: [
     ...defaultFaqs,
@@ -591,7 +594,7 @@ export const diningTableConfig: CategoryConfig = {
   heroTitle: "Dining Tables in Bangalore",
   heroDescription:
     "Custom dining tables built to your room size and seating requirement. Choose from solid wood, engineered wood, glass-top, and premium finishes — delivered free.",
-  heroImage: "/hero.png",
+  heroImage: "/6seaterdining.webp",
   categoryLabel: "Dining Tables",
   customCtaTitle: "Need a Custom Dining Table?",
   customCtaDescription:
@@ -628,7 +631,7 @@ export const reclinerConfig: CategoryConfig = {
   heroTitle: "Recliners in Bangalore",
   heroDescription:
     "Premium manual and motorised recliners built for the Indian home. Choose your fabric, colour, and reclining mechanism — delivered and installed free.",
-  heroImage: "/hero.png",
+  heroImage: "/reclinersofa.webp",
   categoryLabel: "Recliners",
   customCtaTitle: "Need a Custom Recliner Setup?",
   customCtaDescription:
@@ -658,7 +661,7 @@ export const bedConfig: CategoryConfig = {
   heroTitle: "Custom Beds in Bangalore",
   heroDescription:
     "Upholstered beds, platform beds, and storage beds — all custom-built to your room size. Free delivery and professional installation across Bengaluru.",
-  heroImage: "/hero.png",
+  heroImage: "/upholdbed.jpeg",
   categoryLabel: "Beds",
   customCtaTitle: "Need a Custom Bed for Your Bedroom?",
   customCtaDescription:
@@ -671,6 +674,9 @@ export const bedConfig: CategoryConfig = {
     { id: "b1", name: "Upholstered Platform Bed", tag: "Fabric headboard", imageUrl: "/upholdbed.jpeg" },
     { id: "b2", name: "Storage Bed", tag: "Hydraulic storage lift", imageUrl: "/bed1.jpeg" },
     { id: "b3", name: "Wooden Bed Frame", tag: "Sheesham solid wood", imageUrl: "/kingsizebed.jpeg" },
+    { id: "b4", name: "Luxury Bed with Mattress", tag: "Luxury Bed king size", imageUrl: "/bed2.jpeg" },
+    { id: "b5", name: "Blue Upholstered Platform Bed", tag: "Fabric headboard", imageUrl: "/bedblue.jpeg" },
+    { id: "b6", name: "Classic Storage Bed with Mattress", tag: "Storage Bed", imageUrl: "/ClassicStoragebed.jpeg" },
   ],
   faqs: [
     {
@@ -707,7 +713,7 @@ export const customSofaConfig: CategoryConfig = {
     { id: "c3", name: "Modular Custom Set", tag: "Mix & match modules", imageUrl: "/modularcustom.webp" },
     { id: "c4", name: "Luxury Custom Sofa", tag: "Premium materials", imageUrl: "/custombrown.webp" },
     { id: "c5", name: "Compact Custom Sofa", tag: "For small spaces", imageUrl: "/compactspacesaver.webp" },
-    { id: "c6", name: "Family Sectional", tag: "Extra-wide seating", imageUrl: "/familycustom.jpeg" },
+    { id: "c6", name: "Family Sectional", tag: "Extra-wide seating", imageUrl: "/CustomPremiumsofa.jpeg" },
   ],
   faqs: defaultFaqs,
 };
