@@ -11,8 +11,8 @@ import {
   FaShieldHalved,
 } from "react-icons/fa6";
 
-import { areaDataMap, allAreaSlugs } from "../../lib/areaData";
-import { waLink, PHONE_E164 } from "../../lib/constants";
+import { areaDataMap, allAreaSlugs } from "../../../lib/areaData";
+import { waLink, PHONE_E164 } from "../../../lib/constants";
 
 // ---------------------------------------------------------------------------
 // STATIC PARAMS — tells Next.js which slugs to pre-render at build time
@@ -545,7 +545,7 @@ export default function AreaPage({ params }: { params: { area: string } }) {
 
           <div className="mt-8 text-center">
             <a
-              href="https://maps.app.goo.gl/your-gbp-link"
+              href="https://www.google.com/maps/place/Prestige+Dream+Decor/@13.0683529,77.557453,17z/data=!4m8!3m7!1s0x3bae23614ecb9453:0xe40430f5c46bba6d!8m2!3d13.0683529!4d77.5600279!9m1!1b1!16s%2Fg%2F11wxsy25nf?entry=ttu&g_ep=EgoyMDI2MDMxOC4xIKXMDSoASAFQAw%3D%3D"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full border border-amber-200 bg-amber-50 px-5 py-2 text-xs font-semibold text-amber-800 hover:bg-amber-100 transition-colors"
