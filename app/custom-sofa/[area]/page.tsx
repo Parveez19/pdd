@@ -61,7 +61,7 @@ const sofaProducts = [
     name: "Signature L-Shape Sofa",
     description: "Built to your exact dimensions. Choose from 40+ fabrics. Free delivery & installation.",
     imageUrl: "/brownlsofa.jpeg",
-    startingPrice: "₹55,000",
+    startingPrice: "₹55,999",
     deliveryDays: "7–12 days",
   },
   {
@@ -69,7 +69,7 @@ const sofaProducts = [
     name: "City Comfort 3-Seater",
     description: "Wide seating, deep cushions, your choice of fabric. Built and delivered across Bangalore.",
     imageUrl: "/three-seater.webp",
-    startingPrice: "₹35,000",
+    startingPrice: "₹34,999",
     deliveryDays: "7–10 days",
   },
   {
@@ -77,7 +77,7 @@ const sofaProducts = [
     name: "Designer Custom Sofa",
     description: "Fully bespoke — your dimensions, your fabric, your design. Built to order in our workshop.",
     imageUrl: "/customchocolate.webp",
-    startingPrice: "₹35,000",
+    startingPrice: "₹34,999",
     deliveryDays: "7–15 days",
   },
   {
@@ -85,7 +85,7 @@ const sofaProducts = [
     name: "Premium Sofa Cum Bed",
     description: "Smooth fold-out mechanism, comfortable mattress, premium upholstery.",
     imageUrl: "/redsofacumbed.webp",
-    startingPrice: "₹45,000",
+    startingPrice: "₹44,999",
     deliveryDays: "10–15 days",
   },
   {
@@ -93,7 +93,7 @@ const sofaProducts = [
     name: "Compact L-Shape",
     description: "Space-smart design for 2BHK and smaller living rooms. Custom dimensions available.",
     imageUrl: "/greyLshape.jpeg",
-    startingPrice: "₹42,000",
+    startingPrice: "₹41,999",
     deliveryDays: "7–12 days",
   },
   {
@@ -101,7 +101,7 @@ const sofaProducts = [
     name: "Modular Custom Set",
     description: "Reconfigurable modular pieces built to your exact room layout.",
     imageUrl: "/CustomPremiumsofa.jpeg",
-    startingPrice: "₹60,000",
+    startingPrice: "₹59,999",
     deliveryDays: "10–15 days",
   },
 ];
@@ -220,7 +220,7 @@ export default async function AreaPage({ params }: { params: Promise<{ area: str
       <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-slate-200 bg-white shadow-2xl sm:hidden">
         <div className="px-4 pt-2 pb-0.5 text-center">
           <p className="text-[10px] font-medium text-slate-500">
-            Custom sofas from <span className="font-semibold text-emerald-700">₹35,000</span> · Free delivery to {data.name}
+            Custom sofas from <span className="font-semibold text-emerald-700">₹34,999</span> · Free delivery to {data.name}
           </p>
         </div>
         <div className="flex items-center gap-2 px-4 pb-3 pt-1.5">
@@ -301,7 +301,7 @@ export default async function AreaPage({ params }: { params: Promise<{ area: str
             </p>
 
             <p className="mt-3 text-sm font-semibold text-emerald-400">
-              Custom sofas from ₹35,000 · Delivered in 7–15 days · Free installation
+              Custom sofas from ₹34,999 · Delivered in 7–15 days · Free installation
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -376,7 +376,7 @@ export default async function AreaPage({ params }: { params: Promise<{ area: str
         <div className="mx-auto max-w-6xl px-4">
           <div className="grid grid-cols-2 divide-x divide-y divide-slate-100 sm:grid-cols-4 sm:divide-y-0">
             {[
-              { value: "₹35,000", label: "Starting price" },
+              { value: "₹34,999", label: "Starting price" },
               { value: "7–15 days", label: "Delivery timeline" },
               { value: "Free", label: "Delivery & installation" },
               { value: "40+", label: "Fabric choices" },
