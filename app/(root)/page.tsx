@@ -89,9 +89,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "L-Shape Sofas",
     slug: "/l-shape-sofas",
     products: [
-      { id: "l1", name: "Signature L-Shape Sofa", description: "Built to your exact dimensions in our Bangalore workshop. Choose from 40+ fabrics. Free delivery & installation.", imageUrl: "/brownlsofa.jpeg", startingPrice: "₹29,999", deliveryDays: "7–15 days" },
-      { id: "l2", name: "Classic L-Shape", description: "Timeless L-shape with engineered hardwood frame and high-density foam. Customise size, fabric and leg finish.", imageUrl: "/heroimage.jpeg", startingPrice: "₹29,999", deliveryDays: "7–15 days" },
-      { id: "l3", name: "Compact L-Shape", description: "Space-efficient L-shape designed for smaller rooms and apartments across Bangalore. Custom dimensions available.", imageUrl: "/greyLshape.jpeg", startingPrice: "₹29,999", deliveryDays: "7–12 days" },
+      { id: "l1", name: "Signature L-Shape Sofa", description: "Built to your exact dimensions in our Bangalore workshop. Choose from 40+ fabrics. Free delivery & installation.", imageUrl: "/brownlsofa.jpeg", startingPrice: "₹14,999", deliveryDays: "7–15 days" },
+      { id: "l2", name: "Classic L-Shape", description: "Timeless L-shape with engineered hardwood frame and high-density foam. Customise size, fabric and leg finish.", imageUrl: "/heroimage.jpeg", startingPrice: "₹14,999", deliveryDays: "7–15 days" },
+      { id: "l3", name: "Compact L-Shape", description: "Space-efficient L-shape designed for smaller rooms and apartments across Bangalore. Custom dimensions available.", imageUrl: "/greyLshape.jpeg", startingPrice: "₹14,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -99,9 +99,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "3 Seater Sofas",
     slug: "/3-seater-sofas",
     products: [
-      { id: "3s1", name: "City Comfort 3-Seater", description: "Premium 3-seater built to order in our Bangalore studio. Pick your fabric, depth and arm style.", imageUrl: "/three-seater.webp", startingPrice: "₹18,999", deliveryDays: "7–12 days" },
-      { id: "3s2", name: "Minimalist 3-Seater", description: "Clean lines and neutral tones for modern Bangalore homes. Fully customisable dimensions and upholstery.", imageUrl: "/blue3seater.jpeg", startingPrice: "₹19,999", deliveryDays: "7–12 days" },
-      { id: "3s3", name: "Classic 3-Seater", description: "Traditional design with lasting comfort. Engineered frame, custom fabric selection, free installation.", imageUrl: "/tradition3seater.webp", startingPrice: "₹19,999", deliveryDays: "7–12 days" },
+      { id: "3s1", name: "City Comfort 3-Seater", description: "Premium 3-seater built to order in our Bangalore studio. Pick your fabric, depth and arm style.", imageUrl: "/three-seater.webp", startingPrice: "₹16,999", deliveryDays: "7–12 days" },
+      { id: "3s2", name: "Minimalist 3-Seater", description: "Clean lines and neutral tones for modern Bangalore homes. Fully customisable dimensions and upholstery.", imageUrl: "/blue3seater.jpeg", startingPrice: "₹16,999", deliveryDays: "7–12 days" },
+      { id: "3s3", name: "Classic 3-Seater", description: "Traditional design with lasting comfort. Engineered frame, custom fabric selection, free installation.", imageUrl: "/tradition3seater.webp", startingPrice: "₹15,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -109,9 +109,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Sofa Cum Beds",
     slug: "/sofa-cum-beds",
     products: [
-      { id: "scb2", name: "Premium Sofa Cum Bed", description: "Comfortable seating by day, smooth fold-out bed by night. Custom sizes built for your guest room.", imageUrl: "/redsofacumbed.webp", startingPrice: "₹29,999", deliveryDays: "10–15 days" },
-      { id: "scb4", name: "Designer Sofa Cum Bed", description: "Sleek mechanism with premium finish. Ideal for studio apartments and compact 2BHKs across Bangalore.", imageUrl: "/designercumbed.webp", startingPrice: "₹29,999", deliveryDays: "10–15 days" },
-      { id: "scb5", name: "Family Sofa Cum Bed", description: "Extra seating and generous sleeping space. Built wide to accommodate the whole family.", imageUrl: "/white-sofabed.jpg", startingPrice: "₹29,999", deliveryDays: "10–15 days" },
+      { id: "scb2", name: "Premium Sofa Cum Bed", description: "Comfortable seating by day, smooth fold-out bed by night. Custom sizes built for your guest room.", imageUrl: "/redsofacumbed.webp", startingPrice: "₹15,999", deliveryDays: "10–15 days" },
+      { id: "scb4", name: "Designer Sofa Cum Bed", description: "Sleek mechanism with premium finish. Ideal for studio apartments and compact 2BHKs across Bangalore.", imageUrl: "/designercumbed.webp", startingPrice: "₹15,999", deliveryDays: "10–15 days" },
+      { id: "scb5", name: "Family Sofa Cum Bed", description: "Extra seating and generous sleeping space. Built wide to accommodate the whole family.", imageUrl: "/white-sofabed.jpg", startingPrice: "₹15,999", deliveryDays: "10–15 days" },
     ],
   },
   {
@@ -119,9 +119,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Custom Sofas",
     slug: "/custom-sofas",
     products: [
-      { id: "c2", name: "Designer Custom Sofa", description: "Fully bespoke — your dimensions, your fabric, your design. Built in our Bangalore workshop to match your exact brief.", imageUrl: "/customchocolate.webp", startingPrice: "₹41,999", deliveryDays: "7–15 days" },
-      { id: "c3", name: "Modular Custom Set", description: "Modular pieces you can configure as you like. Expand, rearrange or add sections later — fully custom-built.", imageUrl: "/CustomPremiumsofa.jpeg", startingPrice: "₹34,999", deliveryDays: "10–15 days" },
-      { id: "c4", name: "Compact Custom Sofa", description: "Custom-built for small or irregular spaces. We measure, design and build to fit your room perfectly.", imageUrl: "/compactspacesaver.webp", startingPrice: "₹34,999", deliveryDays: "7–12 days" },
+      { id: "c2", name: "Designer Custom Sofa", description: "Fully bespoke — your dimensions, your fabric, your design. Built in our Bangalore workshop to match your exact brief.", imageUrl: "/customchocolate.webp", startingPrice: "₹17,999", deliveryDays: "7–15 days" },
+      { id: "c3", name: "Modular Custom Set", description: "Modular pieces you can configure as you like. Expand, rearrange or add sections later — fully custom-built.", imageUrl: "/CustomPremiumsofa.jpeg", startingPrice: "15,999", deliveryDays: "10–15 days" },
+      { id: "c4", name: "Compact Custom Sofa", description: "Custom-built for small or irregular spaces. We measure, design and build to fit your room perfectly.", imageUrl: "/compactspacesaver.webp", startingPrice: "₹14,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -131,7 +131,7 @@ const catalogCategories: CatalogCategory[] = [
     products: [
       { id: "dt1", name: "4-Seater Dining Set", description: "Compact and modern dining set built to order for smaller Bangalore homes. Custom wood finish and table size.", imageUrl: "/diningtable1.jpeg", startingPrice: "₹12,999", deliveryDays: "7–12 days" },
       { id: "dt2", name: "6-Seater Dining Table", description: "Family-sized dining table with premium finish. Choose your wood tone, leg style and chair upholstery.", imageUrl: "/6seaterdining.webp", startingPrice: "₹21,999", deliveryDays: "10–15 days" },
-      { id: "dt3", name: "Glass-Top Dining Table", description: "Elegant tempered glass top with solid wood base. Custom dimensions and base finish available.", imageUrl: "/marbletopdining.jpeg", startingPrice: "₹24,999", deliveryDays: "7–12 days" },
+      { id: "dt3", name: "Glass-Top Dining Table", description: "Elegant tempered glass top with solid wood base. Custom dimensions and base finish available.", imageUrl: "/marbletopdining.jpeg", startingPrice: "₹18,999", deliveryDays: "7–12 days" },
     ],
   },
   {
@@ -139,9 +139,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Recliners",
     slug: "/recliners",
     products: [
-      { id: "r1", name: "Single Recliner Chair", description: "Manual reclining chair ideal for reading nooks and media rooms. Custom upholstery and colour options.", imageUrl: "/recliner1.jpeg", startingPrice: "₹21,999", deliveryDays: "7–12 days" },
-      { id: "r2", name: "2-Seater Recliner Sofa", description: "Dual-action recliner for couples. Premium mechanism with full fabric customisation.", imageUrl: "/reclinersofa.webp", startingPrice: "₹37,999", deliveryDays: "10–15 days" },
-      { id: "r3", name: "Home Theatre Recliner", description: "Premium 4-seat configuration for your media room. Built to your row dimensions, delivered across Bangalore.", imageUrl: "/reclinerhome.jpeg", startingPrice: "₹41,999", deliveryDays: "10–15 days" },
+      { id: "r1", name: "Single Recliner Chair", description: "Manual reclining chair ideal for reading nooks and media rooms. Custom upholstery and colour options.", imageUrl: "/recliner1.jpeg", startingPrice: "15,999", deliveryDays: "7–12 days" },
+      { id: "r2", name: "2-Seater Recliner Sofa", description: "Dual-action recliner for couples. Premium mechanism with full fabric customisation.", imageUrl: "/reclinersofa.webp", startingPrice: "₹17,999", deliveryDays: "10–15 days" },
+      { id: "r3", name: "Home Theatre Recliner", description: "Premium 4-seat configuration for your media room. Built to your row dimensions, delivered across Bangalore.", imageUrl: "/reclinerhome.jpeg", startingPrice: "15,999", deliveryDays: "10–15 days" },
     ],
   },
   {
@@ -149,7 +149,7 @@ const catalogCategories: CatalogCategory[] = [
     name: "Beds",
     slug: "/beds",
     products: [
-      { id: "b1", name: "Upholstered Platform Bed", description: "Fabric headboard with clean platform design. Custom sizes from single to king — built in our Bangalore studio.", imageUrl: "/bed1.jpeg", startingPrice: "₹29,999", deliveryDays: "7–12 days" },
+      { id: "b1", name: "Upholstered Platform Bed", description: "Fabric headboard with clean platform design. Custom sizes from single to king — built in our Bangalore studio.", imageUrl: "/bed1.jpeg", startingPrice: "₹15,999", deliveryDays: "7–12 days" },
       { id: "b2", name: "Storage Bed", description: "Hydraulic lift storage — perfect for smaller bedrooms. Custom fabric headboard and box size available.", imageUrl: "/upholdbed.jpeg", startingPrice: "₹18,999", deliveryDays: "10–15 days" },
       { id: "b3", name: "Luxury Tufted Bed", description: "Premium velvet tufted headboard in custom sizes. A statement piece built to your exact room dimensions.", imageUrl: "/bed2.jpeg", startingPrice: "₹16,999", deliveryDays: "10–15 days" },
     ],
@@ -380,7 +380,7 @@ const Home: React.FC = () => {
             </p>
 
             <div className="mt-4 inline-flex flex-wrap items-center gap-x-4 gap-y-1 rounded-xl border border-white/10 bg-white/5 px-4 py-2.5">
-              <span className="text-sm font-bold text-emerald-400">Custom sofas from ₹34,999</span>
+              <span className="text-sm font-bold text-emerald-400">Custom sofas from ₹14,999</span>
               <span className="hidden sm:block h-3 w-px bg-white/20" />
               <span className="text-xs text-slate-400">Delivered in 7–15 days · No hidden costs</span>
             </div>
