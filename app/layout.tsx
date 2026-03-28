@@ -23,6 +23,10 @@ export const metadata: Metadata = {
 
   description:
     "Prestige Dream Decor is a custom sofa and furniture manufacturer in Bangalore. We design luxury sofas, sofa cum beds, beds, and custom home furniture with premium materials. Visit our Bangalore showroom today.",
+  
+    verification: {
+    google: "kD8KVvhOS-n8m_zKZ-Oi2LbwjUhbrEmQur7Ep7RsZYg",
+  },
 
   keywords: [
     "custom sofa bangalore",
