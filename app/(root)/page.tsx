@@ -26,7 +26,7 @@ const faqSchema = {
       name: "How much does a custom sofa cost in Bangalore?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Custom sofas start from ₹34,999, depending on size, fabric quality and design. Most orders fall between ₹34,999 and ₹1,20,999. WhatsApp us for a precise quote within 30 minutes.",
+        text: "Custom sofas start from ₹14,999, depending on size, fabric quality and design. Most orders fall between ₹34,999 and ₹1,20,999. WhatsApp us for a precise quote within 30 minutes.",
       },
     },
     {
