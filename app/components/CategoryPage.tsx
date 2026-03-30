@@ -236,7 +236,7 @@ export function CategoryPageTemplate({ config }: { config: CategoryConfig }) {
             alt={heroTitle}
             fill
             priority
-            className="object-cover object-center opacity-35"
+            className="object-cover object-center opacity-70"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/50 to-slate-950/20" />
