@@ -6,6 +6,7 @@ import "./globals.css";
 import WhatsAppButton from "./components/Whatsappbtn";
 import CallButton from "./components/CallButton"
 import { Analytics } from "@vercel/analytics/next";
+import LeadPopup from "./components/LeadPopup";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -121,6 +122,7 @@ export default function RootLayout({
             gtag('config', 'AW-16478617068');
           `}
         </Script>
+        <LeadPopup />
         <Analytics />
 
         <WhatsAppButton />

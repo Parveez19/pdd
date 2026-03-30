@@ -64,6 +64,12 @@ const Footer: React.FC = () => {
               <Link href="/contact" className="block hover:text-amber-300">
                 Contact
               </Link>
+              <Link href="/terms" className="block hover:text-amber-300">
+              Terms & Conditions
+              </Link>
+              <Link href="/privacy-policy" className="block hover:text-amber-300">
+              Privacy Policy
+              </Link>
             </nav>
           </div>
 

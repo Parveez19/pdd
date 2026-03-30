@@ -239,8 +239,8 @@ export function CategoryPageTemplate({ config }: { config: CategoryConfig }) {
             className="object-cover object-center opacity-35"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/60" />
-          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-950 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/50 to-slate-950/20" />
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-slate-950/70 to-transparent" />
         </div>
 
         {/* Content */}

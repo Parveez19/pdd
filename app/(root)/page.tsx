@@ -336,13 +336,13 @@ const Home: React.FC = () => {
           <Image
             src="/heroimage.jpeg"
             alt="Premium living room with designer sofa from Prestige Dream Decor"
-            className="object-cover object-center opacity-40"
+            className="object-cover object-center opacity-70"
             fill
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/70" />
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-950/50 to-slate-950/20" />
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950/70 to-transparent" />
         </div>
 
         <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pt-24 pb-20 sm:pt-32 lg:flex-row lg:items-center lg:gap-16">
