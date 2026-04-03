@@ -7,6 +7,7 @@ import WhatsAppButton from "./components/Whatsappbtn";
 import CallButton from "./components/CallButton"
 import { Analytics } from "@vercel/analytics/next";
 import LeadPopup from "./components/LeadPopup";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -105,7 +106,7 @@ export default function RootLayout({
         <header>
           <Navbar />
         </header>
-
+        <SpeedInsights/>
         <main>{children}</main>
 
             {/* <!-- Google tag (gtag.js) --> */}
