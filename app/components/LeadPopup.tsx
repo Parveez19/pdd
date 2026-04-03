@@ -4,22 +4,23 @@ import { useEffect, useState, useRef } from "react";
 import { FaWhatsapp, FaXmark, FaRegCircleCheck } from "react-icons/fa6";
 
 // ---------------------------------------------------------------------------
-// CONFIG — update these two values
+// CONFIG
 // ---------------------------------------------------------------------------
 
-// 1. Get your Formspree endpoint at https://formspree.io (free, 50 submissions/month)
-//    Create an account → New Form → copy the endpoint URL
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mlgobbyk";
-
-// 2. Deploy a Google Apps Script web app (instructions in README below)
-//    Paste the deployment URL here
 const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycbz8D8EAE2C5Fdm9twqh915VPdpAWJgOlkNgWdGZoy2SifkEbAk4w9eB7GW8NwU41XRtcQ/exec";
-// Delay before popup shows (milliseconds)
-const TRIGGER_DELAY_MS = 25000; 
 
-// localStorage key — prevents showing popup again for 7 days after dismiss
-const STORAGE_KEY = "pdd_popup_dismissed";
-const DISMISS_DAYS = 7;
+// Show popup after this many seconds of browsing
+const TRIGGER_DELAY_MS = 25000; // 25 seconds — they've seen the catalog
+
+// How many days before showing again after DISMISS (closed without filling)
+const DISMISS_COOLDOWN_DAYS = 3;
+
+// How many days before showing again after SUBMIT (already filled the form)
+const SUBMIT_COOLDOWN_DAYS = 30;
+
+const STORAGE_KEY_DISMISSED = "pdd_popup_dismissed";
+const STORAGE_KEY_SUBMITTED = "pdd_popup_submitted";
 
 // ---------------------------------------------------------------------------
 // COMPONENT
@@ -33,12 +34,18 @@ export default function LeadPopup() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    // Check if dismissed recently
-    const dismissed = localStorage.getItem(STORAGE_KEY);
-    if (dismissed) {
-      const dismissedAt = parseInt(dismissed, 10);
-      const daysSince = (Date.now() - dismissedAt) / (1000 * 60 * 60 * 24);
-      if (daysSince < DISMISS_DAYS) return;
+    // Don't show if they already submitted recently
+    const submittedAt = localStorage.getItem(STORAGE_KEY_SUBMITTED);
+    if (submittedAt) {
+      const days = (Date.now() - parseInt(submittedAt, 10)) / (1000 * 60 * 60 * 24);
+      if (days < SUBMIT_COOLDOWN_DAYS) return;
+    }
+
+    // Don't show if they dismissed recently
+    const dismissedAt = localStorage.getItem(STORAGE_KEY_DISMISSED);
+    if (dismissedAt) {
+      const days = (Date.now() - parseInt(dismissedAt, 10)) / (1000 * 60 * 60 * 24);
+      if (days < DISMISS_COOLDOWN_DAYS) return;
     }
 
     timerRef.current = setTimeout(() => setVisible(true), TRIGGER_DELAY_MS);
@@ -49,7 +56,8 @@ export default function LeadPopup() {
 
   function dismiss() {
     setVisible(false);
-    localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    // Record dismiss time — popup comes back after DISMISS_COOLDOWN_DAYS
+    localStorage.setItem(STORAGE_KEY_DISMISSED, Date.now().toString());
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -67,25 +75,32 @@ export default function LeadPopup() {
     };
 
     try {
-      // Submit to both endpoints in parallel
-      await Promise.all([
-        // Formspree → forwards to your email
+      const requests: Promise<Response>[] = [
         fetch(FORMSPREE_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify(data),
         }),
-        // Google Sheets → saves to spreadsheet
-        fetch(SHEETS_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        }),
-      ]);
+      ];
 
+      if (SHEETS_ENDPOINT) {
+        requests.push(
+          fetch(SHEETS_ENDPOINT, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          })
+        );
+      }
+
+      await Promise.all(requests);
       setSubmitted(true);
-      // Auto-close after 4 seconds on success
+      // Record submit — popup won't show again for SUBMIT_COOLDOWN_DAYS
+      localStorage.setItem(STORAGE_KEY_SUBMITTED, Date.now().toString());
+      // Remove dismiss record so submit takes priority
+      localStorage.removeItem(STORAGE_KEY_DISMISSED);
+      // Auto-close after 4 seconds
       setTimeout(() => dismiss(), 4000);
     } catch {
       setError("Something went wrong. Please try WhatsApp instead.");
@@ -122,17 +137,16 @@ export default function LeadPopup() {
         </button>
 
         {submitted ? (
-          /* ── SUCCESS STATE ── */
           <div className="flex flex-col items-center gap-4 px-8 py-10 text-center">
             <div className="grid h-14 w-14 place-items-center rounded-full bg-emerald-100 text-emerald-600 text-2xl">
               <FaRegCircleCheck />
             </div>
-            <h2 className="text-lg font-bold text-slate-900">We'll call you shortly!</h2>
+            <h2 className="text-lg font-bold text-slate-900">We&apos;ll call you shortly!</h2>
             <p className="text-sm text-slate-500">
-              Our team will WhatsApp you within 30 minutes with options tailored to your space.
+              Our team will WhatsApp you within 30 minutes with options for your space.
             </p>
             <a
-              href="https://wa.me/917975709648?text=Hi%20Prestige%20Dream%20Decor%2C%20I%20just%20filled%20your%20form%20and%20I'm%20looking%20for%20a%20custom%20sofa."
+              href="https://wa.me/917975709648?text=Hi%20Prestige%20Dream%20Decor%2C%20I%20just%20filled%20your%20form%20and%20I%27m%20looking%20for%20a%20custom%20sofa."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 text-sm font-bold text-white hover:bg-emerald-500 transition-colors"
@@ -142,9 +156,7 @@ export default function LeadPopup() {
             </a>
           </div>
         ) : (
-          /* ── FORM STATE ── */
           <div className="px-6 pb-6 pt-7 sm:px-8">
-            {/* Header */}
             <div className="mb-1 inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-700">
               ⚡ Limited slots this week
             </div>
@@ -152,10 +164,9 @@ export default function LeadPopup() {
               Get a free quote for your custom sofa
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Share your details — we'll WhatsApp you options and pricing within 30 minutes.
+              Share your details — we&apos;ll WhatsApp you options and pricing within 30 minutes.
             </p>
 
-            {/* Reassurances */}
             <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-400">
               {["No commitment", "No spam", "Reply in 30 min"].map((t) => (
                 <span key={t} className="flex items-center gap-1">
@@ -165,7 +176,6 @@ export default function LeadPopup() {
               ))}
             </div>
 
-            {/* Form */}
             <form onSubmit={handleSubmit} className="mt-5 flex flex-col gap-3">
               <div>
                 <label htmlFor="popup-name" className="mb-1 block text-xs font-medium text-slate-700">
@@ -230,13 +240,8 @@ export default function LeadPopup() {
                 disabled={loading}
                 className="mt-1 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-sm font-bold text-white hover:bg-emerald-500 disabled:opacity-60 transition-colors"
               >
-                {loading ? (
-                  "Sending..."
-                ) : (
-                  <>
-                    <FaWhatsapp className="text-base" />
-                    Get my free quote
-                  </>
+                {loading ? "Sending..." : (
+                  <><FaWhatsapp className="text-base" />Get my free quote</>
                 )}
               </button>
 
@@ -250,63 +255,3 @@ export default function LeadPopup() {
     </>
   );
 }
-
-/*
-================================================================================
-SETUP INSTRUCTIONS
-================================================================================
-
-STEP 1 — Formspree (email notifications)
-─────────────────────────────────────────
-1. Go to https://formspree.io and create a free account
-2. Click "New Form" → name it "PDD Website Leads"
-3. Copy the endpoint URL (looks like https://formspree.io/f/abcdefgh)
-4. Paste it into FORMSPREE_ENDPOINT at the top of this file
-5. Formspree will email every submission to your registered email
-
-STEP 2 — Google Sheets (spreadsheet backup)
-─────────────────────────────────────────────
-1. Create a new Google Sheet at sheets.google.com
-2. Name the columns in Row 1: timestamp | name | phone | interest | source
-3. Go to Extensions → Apps Script
-4. Delete existing code and paste this:
-
-function doPost(e) {
-  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  const data = JSON.parse(e.postData.contents);
-  sheet.appendRow([
-    data.timestamp,
-    data.name,
-    data.phone,
-    data.interest,
-    data.source,
-  ]);
-  return ContentService
-    .createTextOutput(JSON.stringify({ status: "ok" }))
-    .setMimeType(ContentService.MimeType.JSON);
-}
-
-5. Click Deploy → New deployment → Type: Web app
-6. Execute as: Me | Who has access: Anyone
-7. Click Deploy → copy the Web App URL
-8. Paste it into SHEETS_ENDPOINT at the top of this file
-
-STEP 3 — Add popup to your layout
-───────────────────────────────────
-In app/layout.tsx, import and add <LeadPopup /> just before </body>:
-
-import LeadPopup from "@/components/LeadPopup";
-
-export default function RootLayout({ children }) {
-  return (
-    <html>
-      <body>
-        {children}
-        <LeadPopup />
-      </body>
-    </html>
-  );
-}
-
-================================================================================
-*/

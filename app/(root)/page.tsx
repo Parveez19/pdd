@@ -10,6 +10,7 @@ import {
   FaTruckFast,
   FaShieldHalved,
 } from "react-icons/fa6";
+import HeroLeadForm from "../components/HeroLeadForm";
 
 export const metadata: Metadata = {
   title: "Custom Sofas & Furniture in Bengaluru | Prestige Dream Decor",
@@ -120,7 +121,7 @@ const catalogCategories: CatalogCategory[] = [
     slug: "/custom-sofas",
     products: [
       { id: "c2", name: "Designer Custom Sofa", description: "Fully bespoke — your dimensions, your fabric, your design. Built in our Bangalore workshop to match your exact brief.", imageUrl: "/customchocolate.webp", startingPrice: "₹17,999", deliveryDays: "7–15 days" },
-      { id: "c3", name: "Modular Custom Set", description: "Modular pieces you can configure as you like. Expand, rearrange or add sections later — fully custom-built.", imageUrl: "/CustomPremiumsofa.jpeg", startingPrice: "15,999", deliveryDays: "10–15 days" },
+      { id: "c3", name: "Modular Custom Set", description: "Modular pieces you can configure as you like. Expand, rearrange or add sections later — fully custom-built.", imageUrl: "/CustomPremiumsofa.jpeg", startingPrice: "₹15,999", deliveryDays: "10–15 days" },
       { id: "c4", name: "Compact Custom Sofa", description: "Custom-built for small or irregular spaces. We measure, design and build to fit your room perfectly.", imageUrl: "/compactspacesaver.webp", startingPrice: "₹14,999", deliveryDays: "7–12 days" },
     ],
   },
@@ -139,9 +140,9 @@ const catalogCategories: CatalogCategory[] = [
     name: "Recliners",
     slug: "/recliners",
     products: [
-      { id: "r1", name: "Single Recliner Chair", description: "Manual reclining chair ideal for reading nooks and media rooms. Custom upholstery and colour options.", imageUrl: "/recliner1.jpeg", startingPrice: "15,999", deliveryDays: "7–12 days" },
+      { id: "r1", name: "Single Recliner Chair", description: "Manual reclining chair ideal for reading nooks and media rooms. Custom upholstery and colour options.", imageUrl: "/recliner1.jpeg", startingPrice: "₹15,999", deliveryDays: "7–12 days" },
       { id: "r2", name: "2-Seater Recliner Sofa", description: "Dual-action recliner for couples. Premium mechanism with full fabric customisation.", imageUrl: "/reclinersofa.webp", startingPrice: "₹17,999", deliveryDays: "10–15 days" },
-      { id: "r3", name: "Home Theatre Recliner", description: "Premium 4-seat configuration for your media room. Built to your row dimensions, delivered across Bangalore.", imageUrl: "/reclinerhome.jpeg", startingPrice: "15,999", deliveryDays: "10–15 days" },
+      { id: "r3", name: "Home Theatre Recliner", description: "Premium 4-seat configuration for your media room. Built to your row dimensions, delivered across Bangalore.", imageUrl: "/reclinerhome.jpeg", startingPrice: "₹15,999", deliveryDays: "10–15 days" },
     ],
   },
   {
@@ -426,41 +427,17 @@ const Home: React.FC = () => {
             </div>
           </div>
 
-          {/* RIGHT: Quote card */}
-          <div className="w-full max-w-[340px] shrink-0 lg:ml-auto">
+          {/* RIGHT: Inline lead form */}
+          <div className="w-full max-w-[360px] shrink-0 lg:ml-auto">
             <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-2xl">
               <div className="bg-emerald-600 px-5 py-4">
-                <p className="text-sm font-bold text-white">⚡ Get your price in 3 easy steps</p>
+                <p className="text-sm font-bold text-white">⚡ Get your price in 30 minutes</p>
                 <p className="mt-0.5 text-xs text-emerald-100">No commitment. Real answers from our team — not bots.</p>
               </div>
-              <div className="space-y-2.5 px-5 py-5">
-                {[
-                  { num: "1", text: "Send your room size & a photo" },
-                  { num: "2", text: "Pick fabric, colour & comfort level" },
-                  { num: "3", text: "Get exact price + delivery date" },
-                ].map(step => (
-                  <div key={step.num} className="flex items-center gap-3 rounded-xl bg-white/5 px-4 py-3 ring-1 ring-white/8">
-                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-emerald-500 text-[11px] font-black text-white">
-                      {step.num}
-                    </span>
-                    <span className="text-xs font-medium text-slate-200">{step.text}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="border-t border-white/8 bg-slate-950/60 px-5 py-4">
-                <a
-                  href={waLink(heroMessage)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 transition-colors"
-                >
-                  <FaWhatsapp aria-hidden="true" className="text-base" />
-                  Start on WhatsApp — It&apos;s Free
-                </a>
-                <p className="mt-2.5 text-center text-[10px] text-slate-500">
-                  🔒 You talk to our team directly. No bots, no spam.
-                </p>
-              </div>
+              <HeroLeadForm />
+              <p className="px-5 pb-4 text-center text-[10px] text-slate-500">
+                🔒 Your number is only used to send your sofa quote. We never share it.
+              </p>
             </div>
           </div>
 
@@ -829,28 +806,35 @@ const Home: React.FC = () => {
             </div>
 
             <div className="space-y-4">
-              <div className="relative h-64 overflow-hidden rounded-3xl border border-slate-100 bg-slate-100 sm:h-72">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="rounded-2xl bg-white/90 px-6 py-4 text-center shadow-sm">
-                    <p className="text-sm font-semibold text-slate-900">Map preview</p>
-                    <p className="mt-1 text-xs text-slate-500">Embed your Google Maps iframe here.</p>
-                  </div>
-                </div>
-                <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl bg-slate-900/90 px-4 py-3 text-xs text-slate-100">
-                  <span>Prestige Dream Decor Showroom, Vidyaranyapura</span>
-                  <span className="hidden sm:inline-flex items-center gap-1 text-emerald-400">
-                    <FaWhatsapp aria-hidden="true" />
-                    Share live location
-                  </span>
-                </div>
-              </div>
-              <div className="rounded-3xl border border-slate-100 bg-slate-50 px-5 py-4 text-xs text-slate-600">
-                <p className="font-semibold text-slate-900">Travelling from out of Bengaluru?</p>
-                <p className="mt-1">
-                  Share your travel dates on WhatsApp and we&apos;ll help you plan a focused showroom visit with all your shortlisted designs ready.
-                </p>
-              </div>
-            </div>
+  <div className="relative h-64 overflow-hidden rounded-3xl border border-slate-100 bg-slate-100 sm:h-72">
+    {/* The Map Iframe */}
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.486050432547!2d77.5574476106568!3d13.068352887202815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae23614ecb9453%3A0xe40430f5c46bba6d!2sPrestige%20Dream%20Decor!5e0!3m2!1sen!2sin!4v1775233871366!5m2!1sen!2sin"
+      className="absolute inset-0 h-full w-full border-0"
+      
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+      title="Prestige Dream Decor Location"
+    ></iframe>
+
+    {/* Location Overlay Badge */}
+    <div className="absolute inset-x-4 bottom-4 flex items-center justify-between rounded-2xl bg-slate-900/90 px-4 py-3 text-xs text-white">
+      <span>Prestige Dream Decor Showroom, Vidyaranyapura</span>
+      <span className="hidden sm:inline-flex items-center gap-1 text-emerald-400">
+        <FaWhatsapp aria-hidden="true" />
+        Share live location
+      </span>
+    </div>
+  </div>
+
+  {/* Travel Info Box */}
+  <div className="rounded-3xl border border-slate-100 bg-slate-50 px-5 py-4 text-xs text-slate-600">
+    <p className="font-semibold text-slate-900">Travelling from out of Bengaluru?</p>
+    <p className="mt-1">
+      Share your travel dates on WhatsApp and we'll help you plan a focused showroom visit with all your shortlisted designs ready.
+    </p>
+  </div>
+</div>
 
           </div>
         </div>

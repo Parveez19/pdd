@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
               Contact
             </p>
             <div className="space-y-1 text-sm">
-              <p>Vidyaranyapura, Bengaluru</p>
+              <p>1001/52/1 Main Road, Nanjappa - Thindlu Rd, Doddabommasandra, Vidyaranyapura, Bengaluru, Karnataka 560097</p>
               <a href="tel:+917975709648" className="block hover:text-amber-300">
                 +91 79757 09648
               </a>
